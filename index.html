@@ -658,12 +658,181 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   .insta-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   .story-left, .story-right { order: unset; }
 }
+/* ── LOADER ── */
+#page-loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--ink); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+#page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes loaderPulse { 0%,100%{ opacity:0.4; transform:scale(0.95); } 50%{ opacity:1; transform:scale(1.08); } }
+@keyframes loaderFade { 0%,100%{opacity:0.5} 50%{opacity:1} }
+@keyframes loaderBar { from{width:0} to{width:100%} }
+.loader-logo { animation: loaderPulse 1.4s ease-in-out infinite; }
+.loader-text { font-family:'Tajawal',sans-serif; font-size:24px; font-weight:700; color:white; letter-spacing:3px; animation:loaderFade 1.4s ease-in-out infinite; }
+.loader-sub { font-family:'Outfit',sans-serif; font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--teal-light); opacity:0.6; }
+.loader-bar { width:120px; height:2px; background:rgba(74,172,180,0.15); border-radius:2px; overflow:hidden; }
+.loader-bar-fill { height:100%; background:linear-gradient(to left, var(--gold), var(--teal)); border-radius:2px; animation:loaderBar 2s ease forwards; }
+
+/* ── SCROLL PROGRESS ── */
+#scroll-progress { position:fixed; top:0; left:0; right:0; height:3px; z-index:1100; }
+#scroll-progress-fill { height:100%; width:0%; background:linear-gradient(to left, var(--gold), var(--teal)); transition:width 0.08s linear; }
+
+/* ── BACK TO TOP ── */
+#back-to-top {
+  position:fixed; bottom:32px; right:32px; z-index:890;
+  width:48px; height:48px; background:var(--teal-dark);
+  border-radius:50%; border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  color:white; font-size:22px;
+  opacity:0; transform:translateY(20px);
+  transition:all 0.3s ease; box-shadow:0 4px 20px rgba(74,172,180,0.35);
+}
+#back-to-top.visible { opacity:1; transform:translateY(0); }
+#back-to-top:hover { background:var(--teal); transform:translateY(-4px); box-shadow:0 8px 28px rgba(74,172,180,0.45); }
+
+/* ── SOCIAL SIDEBAR ── */
+.social-sidebar {
+  position:fixed; left:0; top:50%; transform:translateY(-50%);
+  z-index:800; display:flex; flex-direction:column; gap:0;
+}
+.social-sidebar-btn {
+  width:44px; height:44px; background:rgba(15,36,38,0.88);
+  border:none; border-right:2px solid var(--teal);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--muted); font-family:'Outfit',sans-serif;
+  font-size:10px; letter-spacing:1px; text-decoration:none;
+  transition:all 0.25s; cursor:pointer; overflow:hidden;
+}
+.social-sidebar-btn:hover { background:var(--teal); color:white; width:56px; }
+
+/* ── LIGHTBOX ── */
+#lightbox {
+  display:none; position:fixed; inset:0; z-index:3000;
+  background:rgba(0,0,0,0.93); align-items:center; justify-content:center; padding:24px;
+}
+#lightbox.open { display:flex; }
+#lightbox-img { max-width:88vw; max-height:88vh; object-fit:contain; border-radius:4px; animation:lightboxIn 0.3s ease; }
+@keyframes lightboxIn { from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)} }
+#lightbox-close {
+  position:absolute; top:20px; left:20px;
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+  color:white; width:44px; height:44px; border-radius:50%;
+  font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s;
+}
+#lightbox-close:hover { background:rgba(255,255,255,0.25); }
+#lightbox-caption {
+  position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+  font-family:'Tajawal',sans-serif; font-size:15px; color:rgba(255,255,255,0.7);
+  background:rgba(0,0,0,0.5); padding:8px 20px; border-radius:20px; white-space:nowrap;
+}
+#lightbox-prev, #lightbox-next {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+  color:white; width:48px; height:48px; border-radius:50%;
+  font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s;
+}
+#lightbox-prev:hover, #lightbox-next:hover { background:var(--teal); border-color:var(--teal); }
+#lightbox-prev { right:20px; }
+#lightbox-next { left:20px; }
+
+/* ── CHAT POPUP ── */
+#chat-popup {
+  position:fixed; bottom:108px; left:32px; z-index:902;
+  background:white; border-radius:16px; width:300px;
+  box-shadow:0 16px 48px rgba(0,0,0,0.18);
+  opacity:0; transform:translateY(16px) scale(0.95);
+  transition:all 0.3s ease; pointer-events:none;
+  border:1px solid rgba(37,211,102,0.15);
+}
+#chat-popup.open { opacity:1; transform:translateY(0) scale(1); pointer-events:all; }
+.chat-header { background:#25D366; padding:14px 16px; border-radius:16px 16px 0 0; display:flex; align-items:center; gap:12px; }
+.chat-avatar { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:20px; }
+.chat-name { font-family:'Tajawal',sans-serif; font-size:15px; font-weight:600; color:white; }
+.chat-status { display:flex; align-items:center; gap:5px; font-family:'Tajawal',sans-serif; font-size:12px; color:rgba(255,255,255,0.85); }
+.chat-status-dot { width:7px; height:7px; background:#fff; border-radius:50%; }
+.chat-body { padding:16px; }
+.chat-bubble { background:#f1f1f1; border-radius:4px 16px 16px 16px; padding:12px 14px; font-family:'Tajawal',sans-serif; font-size:14px; color:#222; line-height:1.7; }
+.chat-time { font-size:11px; color:#aaa; text-align:left; margin-top:6px; }
+.chat-btn {
+  display:block; width:100%; background:#25D366; color:white; border:none;
+  padding:13px; border-radius:10px; text-align:center; margin-top:14px;
+  font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700;
+  cursor:pointer; text-decoration:none; transition:background 0.3s;
+}
+.chat-btn:hover { background:#1da851; }
+@media (max-width:768px), html.is-mobile {
+  .social-sidebar { display:none; }
+  #back-to-top { bottom:80px; right:14px; width:42px; height:42px; font-size:18px; }
+  #chat-popup { left:12px; right:12px; width:auto; bottom:90px; }
+}
 </style>
 </head>
 <body>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/966539900083" class="whatsapp-float" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+<!-- PAGE LOADER -->
+<div id="page-loader">
+  <svg class="loader-logo" width="64" height="64" viewBox="0 0 44 44" fill="none">
+    <path d="M22 4 L38 22 L22 40 L6 22 Z" stroke="#4AACB4" stroke-width="1.5" fill="none"/>
+    <path d="M22 10 L32 22 L22 34 L12 22 Z" stroke="#4AACB4" stroke-width="1" fill="none"/>
+    <path d="M22 15 L28 22 L22 29 L16 22 Z" fill="#4AACB4" opacity="0.4"/>
+    <circle cx="22" cy="4" r="2.5" fill="#D4A84B"/>
+    <circle cx="38" cy="22" r="2.5" fill="#D4A84B"/>
+    <circle cx="22" cy="40" r="2.5" fill="#D4A84B"/>
+    <circle cx="6" cy="22" r="2.5" fill="#D4A84B"/>
+  </svg>
+  <div class="loader-text">لاروش</div>
+  <div class="loader-sub">LAROCHE Trading Company</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"><div id="scroll-progress-fill"></div></div>
+
+<!-- BACK TO TOP -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="العودة للأعلى">↑</button>
+
+<!-- SOCIAL SIDEBAR -->
+<div class="social-sidebar">
+  <a href="#" target="_blank" rel="noopener" class="social-sidebar-btn" aria-label="إنستغرام">IG</a>
+  <a href="#" target="_blank" rel="noopener" class="social-sidebar-btn" aria-label="سناب شات">SC</a>
+  <a href="#" target="_blank" rel="noopener" class="social-sidebar-btn" aria-label="تيك توك">TK</a>
+  <a href="#" target="_blank" rel="noopener" class="social-sidebar-btn" aria-label="X">X</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button id="lightbox-prev" onclick="lightboxNav(-1)">→</button>
+  <img id="lightbox-img" src="" alt="">
+  <button id="lightbox-next" onclick="lightboxNav(1)">←</button>
+  <div id="lightbox-caption"></div>
+</div>
+
+<!-- CHAT POPUP -->
+<div id="chat-popup">
+  <div class="chat-header">
+    <div class="chat-avatar">👕</div>
+    <div>
+      <div class="chat-name">لاروش — خدمة العملاء</div>
+      <div class="chat-status"><span class="chat-status-dot"></span> متاحون الآن</div>
+    </div>
+  </div>
+  <div class="chat-body">
+    <div class="chat-bubble">
+      مرحباً! 👋<br>كيف يمكننا مساعدتك؟ تواصل معنا مباشرة على واتساب وسنرد عليك فوراً.
+      <div class="chat-time">الآن</div>
+    </div>
+    <a href="https://wa.me/966539900083?text=مرحبا، لدي استفسار بخصوص منتجات لاروش" target="_blank" rel="noopener" class="chat-btn">
+      ابدأ المحادثة على واتساب ←
+    </a>
+  </div>
+</div>
+
+<!-- WHATSAPP + CHAT TOGGLE -->
+<a href="https://wa.me/966539900083" class="whatsapp-float" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب" id="waBtn"
+   onclick="toggleChat(event)">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   <span class="wa-tooltip">تواصل معنا</span>
 </a>
@@ -1632,12 +1801,116 @@ function playVideo() {
   if (thumb) thumb.style.display = 'none';
   if (overlay) overlay.style.display = 'none';
   const iframe = document.createElement('iframe');
-  /* ✅ Replace VIDEO_ID with your actual YouTube video ID */
   iframe.src = 'https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0';
   iframe.style.cssText = 'width:100%;height:100%;border:none;position:absolute;inset:0;';
   iframe.allow = 'autoplay; fullscreen';
   wrap.appendChild(iframe);
 }
+
+/* ── PAGE LOADER ── */
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    const loader = document.getElementById('page-loader');
+    if (loader) loader.classList.add('hidden');
+  }, 2000);
+});
+
+/* ── SCROLL PROGRESS ── */
+window.addEventListener('scroll', function() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  const fill = document.getElementById('scroll-progress-fill');
+  if (fill) fill.style.width = pct + '%';
+
+  /* BACK TO TOP */
+  const btn = document.getElementById('back-to-top');
+  if (btn) btn.classList.toggle('visible', scrollTop > 400);
+});
+
+/* ── CHAT POPUP ── */
+let chatOpen = false;
+function toggleChat(e) {
+  e.preventDefault();
+  chatOpen = !chatOpen;
+  document.getElementById('chat-popup').classList.toggle('open', chatOpen);
+}
+document.addEventListener('click', function(e) {
+  const popup = document.getElementById('chat-popup');
+  const waBtn = document.getElementById('waBtn');
+  if (chatOpen && popup && !popup.contains(e.target) && e.target !== waBtn && !waBtn.contains(e.target)) {
+    chatOpen = false;
+    popup.classList.remove('open');
+  }
+});
+
+/* ── LIGHTBOX ── */
+const lightboxImgs = [
+  { src: 'https://cdn.salla.sa/xAmrZe/0f5ace39-48d0-45af-a62f-414bacbd353b-666.9921875x1000-WNyZ38RANslluX8qH6WuYTqglu7u1M5SJH3dKHWT.jpg', cap: 'القمصان' },
+  { src: 'https://cdn.salla.sa/xAmrZe/c7cca27a-e9c0-45bc-a96a-2e6ac51df677-666.9921875x1000-MccRsbeFmb9q2VL5JScznLTntJj0RjmEzbl2pzcM.jpg', cap: 'البناطيل' },
+  { src: 'https://cdn.salla.sa/xAmrZe/5d4c1806-9dfe-4ede-9bbf-56109dfc5398-999.66543994647x1000-VnT97TsxLWGovtZIlSovchXTflv4NsJAejKERhd4.jpg', cap: 'الشورتات' },
+  { src: 'https://cdn.salla.sa/xAmrZe/b195822b-78f7-407c-8e03-0d3da63c0305-666.9921875x1000-AK2xzY0PLaMicQ9ubr9vzLNBoeiGi1TgBmCIrNGD.jpg', cap: 'الهوديز' },
+];
+let lbIndex = 0;
+
+function openLightbox(idx) {
+  lbIndex = idx;
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const cap = document.getElementById('lightbox-caption');
+  img.src = lightboxImgs[lbIndex].src;
+  cap.textContent = lightboxImgs[lbIndex].cap;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (!e || e.target === document.getElementById('lightbox') || e.target === document.getElementById('lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function lightboxNav(dir) {
+  lbIndex = (lbIndex + dir + lightboxImgs.length) % lightboxImgs.length;
+  const img = document.getElementById('lightbox-img');
+  const cap = document.getElementById('lightbox-caption');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = lightboxImgs[lbIndex].src;
+    cap.textContent = lightboxImgs[lbIndex].cap;
+    img.style.opacity = '1';
+  }, 150);
+}
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (lb && lb.classList.contains('open')) {
+    if (e.key === 'Escape') closeLightbox({target: lb});
+    if (e.key === 'ArrowRight') lightboxNav(-1);
+    if (e.key === 'ArrowLeft') lightboxNav(1);
+  }
+  if (e.key === 'Escape') closeModal();
+});
+
+/* Add lightbox click to collection cards */
+document.addEventListener('DOMContentLoaded', function() {
+  const colCards = document.querySelectorAll('.collection-card');
+  colCards.forEach((card, i) => {
+    if (i < lightboxImgs.length) {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        openLightbox(i);
+      });
+    }
+  });
+  const instaItems = document.querySelectorAll('.insta-item');
+  instaItems.forEach((item, i) => {
+    if (i < lightboxImgs.length) {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        openLightbox(i);
+      });
+    }
+  });
+});
 </script>
 </body>
 </html>
