@@ -876,18 +876,17 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
     </a>
 
     <ul class="nav-links">
-      <li><a href="#about">من نحن</a></li>
-      <li><a href="#collections">المجموعات</a></li>
-      <li><a href="#story">قصتنا</a></li>
-      <li><a href="#branches">الفروع</a></li>
-      <li><a href="#careers">الوظائف</a></li>
-      <!-- ✅ NEW: E-commerce link in nav -->
-      <li><a href="https://outfitsa.co/" target="_blank" rel="noopener" class="nav-shop-link">🛍 متجرنا</a></li>
+      <li><a href="#about" data-tid="nav-about">من نحن</a></li>
+      <li><a href="#collections" data-tid="nav-collections">المجموعات</a></li>
+      <li><a href="#story" data-tid="nav-story">قصتنا</a></li>
+      <li><a href="#branches" data-tid="nav-branches">الفروع</a></li>
+      <li><a href="#careers" data-tid="nav-careers">الوظائف</a></li>
+      <li><a href="https://outfitsa.co/" target="_blank" rel="noopener" class="nav-shop-link" data-tid="nav-shop">🛍 متجرنا</a></li>
     </ul>
 
     <div class="nav-actions">
       <button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
-      <a href="#contact" class="btn-nav">تواصل معنا</a>
+      <a href="#contact" class="btn-nav" data-tid="nav-contact-btn">تواصل معنا</a>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="فتح القائمة">
         <span></span><span></span><span></span>
       </button>
@@ -929,19 +928,18 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-eyebrow">علامة أزياء عصرية شبابية · Est. 2022 · جدة</div>
+      <div class="hero-eyebrow" data-tid="hero-eyebrow">علامة أزياء عصرية شبابية · Est. 2022 · جدة</div>
       <h1>
-        <div class="hero-h1-ar">أزياء <span>شبابية</span><br>بلمسة سعودية</div>
-        <div class="hero-h1-en">Modern · Saudi · Fashion</div>
+        <div class="hero-h1-ar" data-tid="hero-h1-line1">أزياء <span style="color:var(--teal-light)">شبابية</span><br><span data-tid="hero-h1-line2">بلمسة سعودية</span></div>
+        <div class="hero-h1-en" data-tid="hero-h1-en">Modern · Saudi · Fashion</div>
       </h1>
-      <p class="hero-desc">لاروش علامة سعودية متخصصة في الأزياء العصرية الشبابية — تجمع بين الجودة العالية والتصميم الحديث والأسعار المناسبة، لتقديم تجربة تسوق استثنائية للجيل السعودي الجديد.</p>
+      <p class="hero-desc" data-tid="hero-desc">لاروش علامة سعودية متخصصة في الأزياء العصرية الشبابية — تجمع بين الجودة العالية والتصميم الحديث والأسعار المناسبة، لتقديم تجربة تسوق استثنائية للجيل السعودي الجديد.</p>
       <div class="hero-cta-row">
-        <!-- ✅ NEW: Shop Now gold button -->
-        <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="btn-hero-shop">
+        <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="btn-hero-shop" data-tid="hero-btn-shop">
           <span>🛍</span><span>تسوق الآن</span>
         </a>
-        <button class="btn-hero-primary" onclick="document.getElementById('collections').scrollIntoView({behavior:'smooth'})"><span>اكتشف العلامة</span></button>
-        <a href="#branches" class="btn-hero-ghost">فروعنا</a>
+        <button class="btn-hero-primary" onclick="document.getElementById('collections').scrollIntoView({behavior:'smooth'})"><span data-tid="hero-btn-discover">اكتشف العلامة</span></button>
+        <a href="#branches" class="btn-hero-ghost" data-tid="hero-btn-branches">فروعنا</a>
       </div>
     </div>
 
@@ -1012,9 +1010,9 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 <section class="about" id="about">
   <div class="about-grid">
     <div class="reveal">
-      <div class="section-tag">من نحن · About Us</div>
-      <h2 class="section-h2-ar">علامة سعودية<br>بروح عصرية</h2>
-      <p class="section-h2-en">Saudi Soul. Modern Vision.</p>
+      <div class="section-tag" data-tid="about-tag">من نحن · About Us</div>
+      <h2 class="section-h2-ar" data-tid="about-h1">علامة سعودية<br>بروح عصرية</h2>
+      <p class="section-h2-en" data-tid="about-h2">Saudi Soul. Modern Vision.</p>
       <p class="about-text">لاروش التجارية علامة سعودية تأسست عام 2022 في جدة، بهدف تقديم تجربة أزياء عصرية شبابية تجمع بين الجودة العالية والتصميم المميز الذي يعكس هوية الجيل السعودي الحديث.</p>
       <p class="about-text">نؤمن بأن الأناقة حق للجميع — لذا نقدم منتجاتنا بأسعار تنافسية دون التنازل عن معايير الجودة العالمية، مع الحفاظ على الروح السعودية الأصيلة في كل تصميم.</p>
     </div>
@@ -1065,11 +1063,11 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   <div class="collections-inner">
     <div class="collections-header reveal">
       <div>
-        <div class="section-tag">مجموعاتنا · Collections</div>
-        <h2 class="section-h2-ar">أزياء تعبّر<br>عن شخصيتك</h2>
+        <div class="section-tag" data-tid="col-tag">مجموعاتنا · Collections</div>
+        <h2 class="section-h2-ar" data-tid="col-h1">أزياء تعبّر<br>عن شخصيتك</h2>
       </div>
       <!-- ✅ Updated: Points to e-commerce site -->
-      <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="btn-outline-teal">تسوق الكل ←</a>
+      <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="btn-outline-teal" data-tid="col-browse-all">تسوق الكل ←</a>
     </div>
     <div class="collections-grid">
 
@@ -1082,8 +1080,8 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
         </div>
         <div class="collection-card-info">
           <div class="col-cat">Category 01</div>
-          <div class="col-name-ar">القمصان</div>
-          <div class="col-name-en">Shirts Collection</div>
+          <div class="col-name-ar" data-tid="col-1-ar">القمصان</div>
+          <div class="col-name-en" data-tid="col-1-en">Shirts Collection</div>
         </div>
         <div class="col-arrow">→</div>
       </a>
@@ -1097,8 +1095,8 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
         </div>
         <div class="collection-card-info">
           <div class="col-cat">Category 02</div>
-          <div class="col-name-ar">البناطيل</div>
-          <div class="col-name-en">Pants Collection</div>
+          <div class="col-name-ar" data-tid="col-2-ar">البناطيل</div>
+          <div class="col-name-en" data-tid="col-2-en">Pants Collection</div>
         </div>
         <div class="col-arrow">→</div>
       </a>
@@ -1112,8 +1110,8 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
         </div>
         <div class="collection-card-info">
           <div class="col-cat">Category 03</div>
-          <div class="col-name-ar">الشورتات</div>
-          <div class="col-name-en">Shorts Collection</div>
+          <div class="col-name-ar" data-tid="col-3-ar">الشورتات</div>
+          <div class="col-name-en" data-tid="col-3-en">Shorts Collection</div>
         </div>
         <div class="col-arrow">→</div>
       </a>
@@ -1127,8 +1125,8 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
         </div>
         <div class="collection-card-info">
           <div class="col-cat">Category 04</div>
-          <div class="col-name-ar">الهوديز</div>
-          <div class="col-name-en">Hoodies Collection</div>
+          <div class="col-name-ar" data-tid="col-4-ar">الهوديز</div>
+          <div class="col-name-en" data-tid="col-4-en">Hoodies Collection</div>
         </div>
         <div class="col-arrow">→</div>
       </a>
@@ -1139,8 +1137,8 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 
 <!-- ✅ NEW: Shop CTA Banner between collections and story -->
 <div class="shop-cta-banner reveal">
-  <h3>🛍 تسوق الآن على متجرنا الإلكتروني</h3>
-  <p>جميع مجموعاتنا متاحة للطلب أونلاين — توصيل لجميع مناطق المملكة</p>
+  <h3 data-tid="shop-cta-h">🛍 تسوق الآن على متجرنا الإلكتروني</h3>
+  <p data-tid="shop-cta-p">جميع مجموعاتنا متاحة للطلب أونلاين — توصيل لجميع مناطق المملكة</p>
   <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="btn-shop-big">
     <span>تسوق على outfitsa.co</span>
     <span>←</span>
@@ -1151,9 +1149,9 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 <section class="story" id="story">
   <div class="story-grid">
     <div class="story-right reveal">
-      <div class="section-tag">قصتنا · Brand Story</div>
-      <h2 class="section-h2-ar">رحلة من جدة<br>إلى المملكة</h2>
-      <p class="section-h2-en">From Jeddah, to the Kingdom.</p>
+      <div class="section-tag" data-tid="story-tag">قصتنا · Brand Story</div>
+      <h2 class="section-h2-ar" data-tid="story-h1">رحلة من جدة<br>إلى المملكة</h2>
+      <p class="section-h2-en" data-tid="story-h2">From Jeddah, to the Kingdom.</p>
       <p class="about-text" style="color:var(--mid);">بدأت لاروش رحلتها عام 2022 بفكرة بسيطة: تقديم أزياء سعودية عصرية حقيقية — لا تقليد للغرب، بل هوية مستقلة تعكس روح الجيل السعودي الجديد.</p>
     </div>
     <div class="story-left reveal reveal-delay-1">
@@ -1187,8 +1185,8 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 <section class="achievements" id="achievements">
   <div class="achievements-inner">
     <div class="reveal">
-      <div class="section-tag">إنجازاتنا · Achievements</div>
-      <h2 class="section-h2-ar">أرقام تتحدث<br>عن نفسها</h2>
+      <div class="section-tag" data-tid="ach-tag">إنجازاتنا · Achievements</div>
+      <h2 class="section-h2-ar" data-tid="ach-h1">أرقام تتحدث<br>عن نفسها</h2>
     </div>
     <div class="achieve-grid">
       <div class="achieve-card reveal">
@@ -1310,9 +1308,9 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 <!-- BRANCHES -->
 <section class="branches" id="branches">
   <div class="reveal">
-    <div class="section-tag">فروعنا · Our Branches</div>
-    <h2 class="section-h2-ar">نحن بالقرب منك</h2>
-    <p class="section-h2-en">Expanding Across the Kingdom</p>
+    <div class="section-tag" data-tid="br-tag">فروعنا · Our Branches</div>
+    <h2 class="section-h2-ar" data-tid="br-h1">نحن بالقرب منك</h2>
+    <p class="section-h2-en" data-tid="br-h2">Expanding Across the Kingdom</p>
   </div>
   <div class="branches-grid">
     <div class="branch-map reveal">
@@ -1500,9 +1498,9 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   <div class="careers-bg"><svg viewBox="0 0 800 600" fill="none" width="100%" height="100%"><rect x="40" y="40" width="720" height="520" stroke="#4AACB4" stroke-width="0.8"/></svg></div>
   <div class="careers-inner">
     <div class="careers-left reveal">
-      <div class="section-tag">انضم إلينا · Careers</div>
-      <h2 class="section-h2-ar">كن جزءاً من<br>مستقبل الموضة</h2>
-      <p class="section-h2-en">Build Saudi Fashion with Us.</p>
+      <div class="section-tag" data-tid="car-tag">انضم إلينا · Careers</div>
+      <h2 class="section-h2-ar" data-tid="car-h1">كن جزءاً من<br>مستقبل الموضة</h2>
+      <p class="section-h2-en" data-tid="car-h2">Build Saudi Fashion with Us.</p>
       <p class="careers-text">نبحث عن أشخاص شغوفين بالأزياء والإبداع، يريدون المساهمة في بناء علامة سعودية تفخر بها المملكة.</p>
       <div class="culture-pills">
         <div class="culture-pill">الشغف</div>
@@ -1528,7 +1526,7 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
     <div id="careerFormWrap">
       <h2 class="modal-title">تقدم لوظيفة</h2>
       <p class="modal-sub">أرسل طلبك وسيتواصل معك فريق الموارد البشرية</p>
-      <div class="form-group"><label class="form-label">الاسم الكامل *</label><input type="text" class="form-input" id="careerName" placeholder="أدخل اسمك الكريم"></div>
+      <div class="form-group"><label class="form-label">الاسم الكامل *</label><input type="text" class="form-input" id="careerName" placeholder="أدخل اسمك الكريم" data-ph-ar="أدخل اسمك الكريم" data-ph-en="Enter your full name"></div>
       <div class="form-group"><label class="form-label">البريد الإلكتروني *</label><input type="email" class="form-input" id="careerEmail" placeholder="example@email.com" dir="ltr"></div>
       <div class="form-group"><label class="form-label">رقم الجوال *</label><input type="tel" class="form-input" id="careerPhone" placeholder="05XXXXXXXX" dir="ltr"></div>
       <div class="form-group"><label class="form-label">المسمى الوظيفي</label>
@@ -1544,9 +1542,9 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="reveal">
-    <div class="section-tag">تواصل معنا · Contact</div>
-    <h2 class="section-h2-ar">يسعدنا سماعك</h2>
-    <p class="section-h2-en">We'd Love to Hear from You.</p>
+    <div class="section-tag" data-tid="ct-tag">تواصل معنا · Contact</div>
+    <h2 class="section-h2-ar" data-tid="ct-h1">يسعدنا سماعك</h2>
+    <p class="section-h2-en" data-tid="ct-h2">We'd Love to Hear from You.</p>
   </div>
   <div class="contact-grid">
     <div class="reveal">
@@ -1575,13 +1573,13 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
       </div>
     </div>
     <div class="reveal reveal-delay-1">
-      <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" class="form-input" id="ctName" placeholder="أدخل اسمك الكريم"></div>
+      <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" class="form-input" id="ctName" placeholder="أدخل اسمك الكريم" data-ph-ar="أدخل اسمك الكريم" data-ph-en="Enter your full name"></div>
       <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input type="email" class="form-input" id="ctEmail" placeholder="example@email.com" dir="ltr"></div>
       <div class="form-group"><label class="form-label">الموضوع</label>
         <select class="form-input" id="ctSubject"><option>استفسار عام</option><option>شراكة أو استثمار</option><option>طلب توظيف</option><option>وسائل إعلام</option><option>أخرى</option></select>
       </div>
-      <div class="form-group"><label class="form-label">رسالتك</label><textarea class="form-input form-textarea" id="ctMessage" placeholder="اكتب رسالتك هنا..."></textarea></div>
-      <button class="btn-submit" id="ctSubmitBtn" onclick="submitContact()">إرسال الرسالة ←</button>
+      <div class="form-group"><label class="form-label">رسالتك</label><textarea class="form-input form-textarea" id="ctMessage" placeholder="اكتب رسالتك هنا..." data-ph-ar="اكتب رسالتك هنا..." data-ph-en="Write your message here..."></textarea></div>
+      <button class="btn-submit" id="ctSubmitBtn" onclick="submitContact()" data-tid="ct-btn">إرسال الرسالة ←</button>
       <div class="contact-success" id="ctSuccess">✓ تم إرسال رسالتك بنجاح! سنرد عليك في أقرب وقت.</div>
     </div>
   </div>
@@ -1591,12 +1589,12 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 <section class="newsletter">
   <div class="newsletter-inner">
     <div class="newsletter-text">
-      <h3>ابقَ على اطلاع</h3>
-      <p>اشترك ليصلك أحدث مجموعاتنا وعروضنا الحصرية أولاً بأول</p>
+      <h3 data-tid="nl-h">ابقَ على اطلاع</h3>
+      <p data-tid="nl-p">اشترك ليصلك أحدث مجموعاتنا وعروضنا الحصرية أولاً بأول</p>
     </div>
     <div class="newsletter-form">
-      <input type="email" id="nlEmail" placeholder="بريدك الإلكتروني" dir="ltr">
-      <button class="btn-gold" onclick="submitNewsletter()">اشترك الآن</button>
+      <input type="email" id="nlEmail" placeholder="بريدك الإلكتروني" data-ph-ar="بريدك الإلكتروني" data-ph-en="Your email address" dir="ltr">
+      <button class="btn-gold" onclick="submitNewsletter()" data-tid="nl-btn">اشترك الآن</button>
     </div>
   </div>
 </section>
@@ -1688,11 +1686,109 @@ function closeMenu() {
 }
 
 let isAr = true;
+
+const translations = {
+  /* NAV */
+  'nav-about':        ['من نحن',          'About Us'],
+  'nav-collections':  ['المجموعات',       'Collections'],
+  'nav-story':        ['قصتنا',           'Our Story'],
+  'nav-branches':     ['الفروع',          'Branches'],
+  'nav-careers':      ['الوظائف',         'Careers'],
+  'nav-shop':         ['🛍 متجرنا',       '🛍 Our Store'],
+  'nav-contact-btn':  ['تواصل معنا',      'Contact Us'],
+  /* HERO */
+  'hero-eyebrow':     ['علامة أزياء عصرية شبابية · Est. 2022 · جدة', 'Modern Youth Fashion Brand · Est. 2022 · Jeddah'],
+  'hero-h1-line1':    ['أزياء <span style="color:var(--teal-light)">شبابية</span>', 'Modern <span style="color:var(--teal-light)">Youth</span>'],
+  'hero-h1-line2':    ['بلمسة سعودية',    'Saudi Fashion'],
+  'hero-h1-en':       ['Modern · Saudi · Fashion', 'علامة سعودية عصرية'],
+  'hero-desc':        ['لاروش علامة سعودية متخصصة في الأزياء العصرية الشبابية — تجمع بين الجودة العالية والتصميم الحديث والأسعار المناسبة.','LaRoche is a Saudi brand specializing in modern youth fashion — combining high quality, contemporary design, and competitive prices.'],
+  'hero-btn-shop':    ['🛍 تسوق الآن',    '🛍 Shop Now'],
+  'hero-btn-discover':['اكتشف العلامة',   'Discover Brand'],
+  'hero-btn-branches':['فروعنا',          'Our Branches'],
+  /* STATS */
+  'stat-label-1-ar':  ['عميل راضٍ',       'Happy Customers'],
+  'stat-label-1-en':  ['Happy Customers',  'عملاء سعداء'],
+  'stat-label-2-ar':  ['سنة التأسيس',     'Year Founded'],
+  'stat-label-3-ar':  ['فرع نشط في المملكة','Active Branches KSA'],
+  'stat-label-4-ar':  ['فئات منتجات',     'Product Categories'],
+  /* ABOUT */
+  'about-tag':        ['من نحن · About Us','About Us · من نحن'],
+  'about-h1':         ['علامة سعودية<br>بروح عصرية','Saudi Brand<br>Modern Spirit'],
+  'about-h2':         ['Saudi Soul. Modern Vision.','روح سعودية. رؤية حديثة.'],
+  'about-p1':         ['لاروش التجارية علامة سعودية تأسست عام 2022 في جدة، بهدف تقديم تجربة أزياء عصرية شبابية تجمع بين الجودة العالية والتصميم المميز.','LaRoche Trading was founded in 2022 in Jeddah, aiming to deliver a modern youth fashion experience combining high quality and distinctive design.'],
+  'about-p2':         ['نؤمن بأن الأناقة حق للجميع — لذا نقدم منتجاتنا بأسعار تنافسية دون التنازل عن معايير الجودة العالمية.','We believe elegance is for everyone — so we offer competitive prices without compromising on global quality standards.'],
+  /* COLLECTIONS */
+  'col-tag':          ['مجموعاتنا · Collections','Collections · مجموعاتنا'],
+  'col-h1':           ['أزياء تعبّر<br>عن شخصيتك','Fashion That Expresses<br>Your Personality'],
+  'col-browse-all':   ['تسوق الكل ←',    'Shop All ←'],
+  'col-1-cat':        ['Category 01',     'Category 01'],
+  'col-1-ar':         ['القمصان',         'Shirts'],
+  'col-1-en':         ['Shirts Collection','مجموعة القمصان'],
+  'col-2-ar':         ['البناطيل',        'Pants'],
+  'col-2-en':         ['Pants Collection', 'مجموعة البناطيل'],
+  'col-3-ar':         ['الشورتات',        'Shorts'],
+  'col-3-en':         ['Shorts Collection','مجموعة الشورتات'],
+  'col-4-ar':         ['الهوديز',         'Hoodies'],
+  'col-4-en':         ['Hoodies Collection','مجموعة الهوديز'],
+  /* SHOP CTA */
+  'shop-cta-h':       ['🛍 تسوق الآن على متجرنا الإلكتروني','🛍 Shop Now on Our Online Store'],
+  'shop-cta-p':       ['جميع مجموعاتنا متاحة للطلب أونلاين — توصيل لجميع مناطق المملكة','All collections available online — delivery across Saudi Arabia'],
+  'shop-cta-btn':     ['تسوق على outfitsa.co ←','Shop at outfitsa.co ←'],
+  /* STORY */
+  'story-tag':        ['قصتنا · Brand Story','Brand Story · قصتنا'],
+  'story-h1':         ['رحلة من جدة<br>إلى المملكة','Journey from Jeddah<br>to the Kingdom'],
+  'story-h2':         ['From Jeddah, to the Kingdom.','من جدة إلى المملكة.'],
+  'story-p':          ['بدأت لاروش رحلتها عام 2022 بفكرة بسيطة: تقديم أزياء سعودية عصرية حقيقية — لا تقليد للغرب، بل هوية مستقلة.','LaRoche began its journey in 2022 with a simple idea: authentic modern Saudi fashion — not a western imitation, but an independent identity.'],
+  /* ACHIEVEMENTS */
+  'ach-tag':          ['إنجازاتنا · Achievements','Achievements · إنجازاتنا'],
+  'ach-h1':           ['أرقام تتحدث<br>عن نفسها','Numbers That<br>Speak for Themselves'],
+  /* BRANCHES */
+  'br-tag':           ['فروعنا · Our Branches','Our Branches · فروعنا'],
+  'br-h1':            ['نحن بالقرب منك','We Are Near You'],
+  'br-h2':            ['Expanding Across the Kingdom','نتوسع في جميع أنحاء المملكة'],
+  /* CAREERS */
+  'car-tag':          ['انضم إلينا · Careers','Careers · انضم إلينا'],
+  'car-h1':           ['كن جزءاً من<br>مستقبل الموضة','Be Part of the<br>Future of Fashion'],
+  'car-h2':           ['Build Saudi Fashion with Us.','ابنِ الموضة السعودية معنا.'],
+  'car-p':            ['نبحث عن أشخاص شغوفين بالأزياء والإبداع، يريدون المساهمة في بناء علامة سعودية تفخر بها المملكة.','We are looking for people passionate about fashion and creativity who want to help build a brand the Kingdom is proud of.'],
+  'car-btn':          ['تقدم للوظائف',    'Apply Now'],
+  /* CONTACT */
+  'ct-tag':           ['تواصل معنا · Contact','Contact · تواصل معنا'],
+  'ct-h1':            ['يسعدنا سماعك',   'We\'d Love to Hear from You'],
+  'ct-h2':            ['We\'d Love to Hear from You.','يسعدنا سماعك.'],
+  'ct-btn':           ['إرسال الرسالة ←', 'Send Message ←'],
+  /* NEWSLETTER */
+  'nl-h':             ['ابقَ على اطلاع', 'Stay Updated'],
+  'nl-p':             ['اشترك ليصلك أحدث مجموعاتنا وعروضنا الحصرية أولاً بأول','Subscribe to receive our latest collections and exclusive offers first'],
+  'nl-btn':           ['اشترك الآن',     'Subscribe Now'],
+  /* FOOTER */
+  'footer-desc':      ['علامة سعودية متخصصة في الأزياء العصرية الشبابية — تجمع بين الجودة والتصميم والقيمة الحقيقية.','A Saudi brand specializing in modern youth fashion — combining quality, design, and real value.'],
+};
+
 function toggleLang() {
   isAr = !isAr;
-  document.getElementById('langBtn').textContent = isAr ? 'EN' : 'AR';
+  const btn = document.getElementById('langBtn');
+  if (btn) btn.textContent = isAr ? 'EN' : 'AR';
   document.documentElement.lang = isAr ? 'ar' : 'en';
   document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+
+  /* Translate all elements with data-tid attribute */
+  document.querySelectorAll('[data-tid]').forEach(el => {
+    const key = el.getAttribute('data-tid');
+    if (translations[key]) {
+      el.innerHTML = isAr ? translations[key][0] : translations[key][1];
+    }
+  });
+
+  /* Translate placeholders */
+  document.querySelectorAll('[data-ph-ar]').forEach(el => {
+    el.placeholder = isAr ? el.getAttribute('data-ph-ar') : el.getAttribute('data-ph-en');
+  });
+
+  /* Flip font direction on inputs */
+  document.querySelectorAll('.form-input').forEach(el => {
+    el.style.direction = isAr ? 'rtl' : 'ltr';
+  });
 }
 
 const revealEls = document.querySelectorAll('.reveal');
