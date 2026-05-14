@@ -103,7 +103,7 @@ nav.scrolled { background: rgba(254,254,254,0.98); box-shadow: 0 4px 30px rgba(7
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 .mobile-menu {
-  display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+  display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
   background: rgba(254,254,254,0.98); backdrop-filter: blur(20px); z-index: 999;
   flex-direction: column; align-items: center; justify-content: center; gap: 32px;
   opacity: 0; transform: translateY(-10px); transition: opacity 0.3s, transform 0.3s;
@@ -427,26 +427,81 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   .newsletter-inner { flex-direction: column; align-items: flex-start; }
   .newsletter-form { min-width: auto; width: 100%; }
 }
+
 @media (max-width: 768px) {
+  /* NAV fix */
   .nav-links { display: none; }
   .nav-actions .lang-toggle { display: none; }
+  .nav-actions .btn-nav { display: none; }
   .hamburger { display: flex; }
-  .stats-inner, .values-row, .achieve-grid, .careers-right, .footer-top { grid-template-columns: 1fr; }
-  .collections-grid { grid-template-columns: 1fr 1fr; }
+  nav .nav-inner { padding: 0 20px; height: 60px; }
+
+  /* HERO fix */
+  .hero { min-height: 100svh; align-items: flex-start; }
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding: 80px 24px 48px;
+    gap: 0;
+  }
+  .hero-h1-ar { font-size: 48px; margin-bottom: 6px; }
+  .hero-h1-en { font-size: 20px; margin-bottom: 20px; letter-spacing: 3px; }
+  .hero-desc { font-size: 15px; margin-bottom: 32px; }
+  .hero-cta-row { flex-direction: column; align-items: stretch; gap: 12px; }
+  .btn-hero-shop, .btn-hero-primary, .btn-hero-ghost {
+    text-align: center; justify-content: center;
+    padding: 14px 24px; font-size: 15px; width: 100%;
+  }
+  .hero-right { display: none; }
+  .hero-scroll { display: none; }
+
+  /* Hero background image — hide on mobile */
+  .hero > div[style*="width:45%"] { display: none; }
+
+  /* COLLECTIONS fix */
+  .collections { padding: 60px 16px; }
+  .collections-grid { grid-template-columns: 1fr 1fr; gap: 3px; }
+  .collection-card { aspect-ratio: 2/3; }
+  .col-name-ar { font-size: 18px; }
+  .col-name-en { font-size: 11px; }
   .collections-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .about, .collections, .story, .achievements, .branches, .careers-teaser, .contact, .newsletter { padding: 80px 24px; }
-  nav .nav-inner { padding: 0 24px; }
-  footer { padding: 60px 24px 32px; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .cookie-bar { padding: 16px 24px; flex-direction: column; align-items: flex-start; }
-  .whatsapp-float { bottom: 24px; left: 20px; }
-  .stat-item { padding: 32px 20px; }
-  .modal-box { padding: 32px 24px; }
-  .shop-cta-banner { padding: 40px 24px; }
+
+  /* STATS fix */
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .stat-item { padding: 28px 16px; border-left: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .stat-number { font-size: 40px; }
+
+  /* VALUES fix */
+  .values-row { grid-template-columns: 1fr 1fr; gap: 2px; }
+  .value-card { padding: 28px 16px; }
+
+  /* ACHIEVEMENTS fix */
+  .achieve-grid { grid-template-columns: 1fr; }
+
+  /* CAREERS fix */
+  .careers-right { grid-template-columns: 1fr 1fr; }
+
+  /* GENERAL */
+  .about, .story, .achievements, .branches, .careers-teaser, .contact, .newsletter { padding: 60px 20px; }
+  .section-h2-ar { font-size: 32px; }
+
+  /* FOOTER fix */
+  nav .nav-inner { padding: 0 20px; }
+  footer { padding: 48px 20px 28px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { grid-template-columns: 1fr; text-align: center; gap: 10px; }
   .footer-copy { text-align: center; }
-  .footer-legal { justify-content: center; }
+  .footer-legal { justify-content: center; flex-wrap: wrap; }
   .footer-legal-info { order: -1; }
+
+  /* MISC */
+  .cookie-bar { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
+  .whatsapp-float { bottom: 20px; left: 16px; width: 48px; height: 48px; }
+  .stat-item { padding: 24px 12px; }
+  .modal-box { padding: 28px 20px; }
+  .shop-cta-banner { padding: 36px 20px; }
+  .shop-cta-banner h3 { font-size: 20px; }
+  .btn-shop-big { padding: 14px 28px; font-size: 15px; }
+  .mobile-menu { top: 60px; }
 }
 </style>
 </head>
