@@ -217,6 +217,7 @@ nav.scrolled { background: rgba(254,254,254,0.98); box-shadow: 0 4px 30px rgba(7
 .col-bg-3 { background: linear-gradient(315deg, var(--charcoal) 0%, var(--teal-deep) 60%); }
 .col-bg-4 { background: linear-gradient(45deg, var(--ink-mid) 0%, var(--charcoal) 70%); }
 .collection-card:hover .collection-card-bg { transform: scale(1.06); }
+.collection-card:hover .col-img { transform: scale(1.06); opacity: 0.88 !important; }
 .col-pattern { position: absolute; inset: 0; opacity: 0.12; }
 .collection-card-info { position: absolute; bottom: 0; right: 0; left: 0; padding: 32px 28px; background: linear-gradient(to top, rgba(15,36,38,0.95) 0%, transparent 100%); transform: translateY(8px); transition: transform 0.4s ease; }
 .collection-card:hover .collection-card-info { transform: translateY(0); }
@@ -532,6 +533,11 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   <div class="hero-gradient"></div>
   <div class="hero-beam"></div>
   <div class="hero-beam-2"></div>
+  <!-- Real product image subtle background -->
+  <div style="position:absolute;left:0;top:0;bottom:0;width:45%;overflow:hidden;opacity:0.12;pointer-events:none;">
+    <img src="https://cdn.salla.sa/xAmrZe/0f5ace39-48d0-45af-a62f-414bacbd353b-666.9921875x1000-WNyZ38RANslluX8qH6WuYTqglu7u1M5SJH3dKHWT.jpg"
+         alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+  </div>
 
   <div class="hero-content">
     <div class="hero-left">
@@ -678,27 +684,71 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
       <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="btn-outline-teal">تسوق الكل ←</a>
     </div>
     <div class="collections-grid">
-      <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="collection-card reveal">
-        <div class="collection-card-bg col-bg-1"><svg class="col-pattern" viewBox="0 0 300 400" fill="none"><rect x="20" y="20" width="260" height="360" stroke="#4AACB4" stroke-width="0.8"/></svg></div>
-        <svg style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);opacity:0.15;" width="80" height="100" viewBox="0 0 80 100" fill="none"><path d="M20 10 L0 30 L15 35 L15 90 L65 90 L65 35 L80 30 L60 10 L50 20 C45 28 35 28 30 20 Z" fill="#4AACB4" opacity="0.3" stroke="#4AACB4" stroke-width="1"/></svg>
-        <div class="collection-card-info"><div class="col-cat">Category 01</div><div class="col-name-ar">القمصان</div><div class="col-name-en">Shirts Collection</div></div>
+
+      <!-- قمصان — قميص كاجوال أخضر غامق -->
+      <a href="https://outfitsa.co/ar/قميص/c479281986" target="_blank" rel="noopener" class="collection-card reveal">
+        <div class="collection-card-bg" style="background:#0F2426;">
+          <img src="https://cdn.salla.sa/xAmrZe/0f5ace39-48d0-45af-a62f-414bacbd353b-666.9921875x1000-WNyZ38RANslluX8qH6WuYTqglu7u1M5SJH3dKHWT.jpg"
+               alt="قمصان لاروش"
+               class="col-img"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.85;transition:transform 0.6s ease,opacity 0.3s ease;">
+        </div>
+        <div class="collection-card-info">
+          <div class="col-cat">Category 01</div>
+          <div class="col-name-ar">القمصان</div>
+          <div class="col-name-en">Shirts Collection</div>
+        </div>
         <div class="col-arrow">→</div>
       </a>
-      <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="collection-card reveal reveal-delay-1">
-        <div class="collection-card-bg col-bg-2"><svg class="col-pattern" viewBox="0 0 300 400" fill="none"><rect x="20" y="20" width="260" height="360" stroke="#4AACB4" stroke-width="0.8"/></svg></div>
-        <div class="collection-card-info"><div class="col-cat">Category 02</div><div class="col-name-ar">البناطيل</div><div class="col-name-en">Pants Collection</div></div>
+
+      <!-- بناطيل — بنطلون كارجو جينز زيتي -->
+      <a href="https://outfitsa.co/ar/بنطلون/c944013644" target="_blank" rel="noopener" class="collection-card reveal reveal-delay-1">
+        <div class="collection-card-bg" style="background:#0F2426;">
+          <img src="https://cdn.salla.sa/xAmrZe/c7cca27a-e9c0-45bc-a96a-2e6ac51df677-666.9921875x1000-MccRsbeFmb9q2VL5JScznLTntJj0RjmEzbl2pzcM.jpg"
+               alt="بناطيل لاروش"
+               class="col-img"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.85;transition:transform 0.6s ease,opacity 0.3s ease;">
+        </div>
+        <div class="collection-card-info">
+          <div class="col-cat">Category 02</div>
+          <div class="col-name-ar">البناطيل</div>
+          <div class="col-name-en">Pants Collection</div>
+        </div>
         <div class="col-arrow">→</div>
       </a>
-      <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="collection-card reveal reveal-delay-2">
-        <div class="collection-card-bg col-bg-3"><svg class="col-pattern" viewBox="0 0 300 400" fill="none"><rect x="20" y="20" width="260" height="360" stroke="#4AACB4" stroke-width="0.8"/></svg></div>
-        <div class="collection-card-info"><div class="col-cat">Category 03</div><div class="col-name-ar">الشورتات</div><div class="col-name-en">Shorts Collection</div></div>
+
+      <!-- شورتات — شورت جينز أسود -->
+      <a href="https://outfitsa.co/ar/شورتات/c1129999823" target="_blank" rel="noopener" class="collection-card reveal reveal-delay-2">
+        <div class="collection-card-bg" style="background:#0F2426;">
+          <img src="https://cdn.salla.sa/xAmrZe/5d4c1806-9dfe-4ede-9bbf-56109dfc5398-999.66543994647x1000-VnT97TsxLWGovtZIlSovchXTflv4NsJAejKERhd4.jpg"
+               alt="شورتات لاروش"
+               class="col-img"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.85;transition:transform 0.6s ease,opacity 0.3s ease;">
+        </div>
+        <div class="collection-card-info">
+          <div class="col-cat">Category 03</div>
+          <div class="col-name-ar">الشورتات</div>
+          <div class="col-name-en">Shorts Collection</div>
+        </div>
         <div class="col-arrow">→</div>
       </a>
-      <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="collection-card reveal reveal-delay-3">
-        <div class="collection-card-bg col-bg-4"><svg class="col-pattern" viewBox="0 0 300 400" fill="none"><rect x="20" y="20" width="260" height="360" stroke="#4AACB4" stroke-width="0.8"/></svg></div>
-        <div class="collection-card-info"><div class="col-cat">Category 04</div><div class="col-name-ar">الهوديز</div><div class="col-name-en">Hoodies Collection</div></div>
+
+      <!-- هوديز — هودي أوفر سايز بني -->
+      <a href="https://outfitsa.co/ar/هودي/c870530169" target="_blank" rel="noopener" class="collection-card reveal reveal-delay-3">
+        <div class="collection-card-bg" style="background:#0F2426;">
+          <img src="https://cdn.salla.sa/xAmrZe/b195822b-78f7-407c-8e03-0d3da63c0305-666.9921875x1000-AK2xzY0PLaMicQ9ubr9vzLNBoeiGi1TgBmCIrNGD.jpg"
+               alt="هوديز لاروش"
+               class="col-img"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.85;transition:transform 0.6s ease,opacity 0.3s ease;">
+        </div>
+        <div class="collection-card-info">
+          <div class="col-cat">Category 04</div>
+          <div class="col-name-ar">الهوديز</div>
+          <div class="col-name-en">Hoodies Collection</div>
+        </div>
         <div class="col-arrow">→</div>
       </a>
+
     </div>
   </div>
 </section>
