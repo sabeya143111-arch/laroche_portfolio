@@ -406,7 +406,153 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
 .footer-legal-link { font-family: 'Outfit', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.3s; white-space: nowrap; }
 .footer-legal-link:hover { color: var(--teal-light); }
 
-/* ── WHATSAPP ── */
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--ink); padding: 120px 48px; }
+.testimonials-inner { max-width: 1400px; margin: 0 auto; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 60px; }
+.testi-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(74,172,180,0.15);
+  border-radius: 4px; padding: 36px 32px; position: relative; transition: all 0.3s;
+}
+.testi-card:hover { background: rgba(74,172,180,0.06); border-color: rgba(74,172,180,0.35); transform: translateY(-4px); }
+.testi-stars { display: flex; gap: 4px; margin-bottom: 20px; }
+.testi-star { color: var(--gold); font-size: 16px; }
+.testi-quote {
+  font-family: 'Tajawal', sans-serif; font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,0.75); line-height: 1.9; margin-bottom: 28px;
+  position: relative; padding-right: 20px;
+}
+.testi-quote::before {
+  content: '"'; position: absolute; right: 0; top: -8px;
+  font-size: 48px; color: var(--teal); opacity: 0.3; font-family: 'Cormorant Garamond', serif;
+  line-height: 1;
+}
+.testi-author { display: flex; align-items: center; gap: 14px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal-deep), var(--teal-dark));
+  border: 2px solid rgba(74,172,180,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Tajawal', sans-serif; font-size: 16px; font-weight: 600; color: var(--teal-light);
+  flex-shrink: 0;
+}
+.testi-name { font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 600; color: white; margin-bottom: 2px; }
+.testi-city { font-family: 'Outfit', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+.testi-verified { position: absolute; top: 24px; left: 24px; }
+.testi-verified svg { width: 18px; height: 18px; fill: var(--teal); opacity: 0.7; }
+
+/* ── INSTAGRAM GRID ── */
+.insta-section { background: var(--light-bg); padding: 120px 48px; }
+.insta-inner { max-width: 1400px; margin: 0 auto; }
+.insta-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+.insta-handle {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Outfit', sans-serif; font-size: 13px; letter-spacing: 2px;
+  color: var(--teal-dark); text-decoration: none; transition: color 0.3s;
+}
+.insta-handle:hover { color: var(--teal); }
+.insta-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; }
+.insta-item {
+  aspect-ratio: 1; background: var(--teal-pale); position: relative;
+  overflow: hidden; cursor: pointer; display: block; text-decoration: none;
+}
+.insta-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, opacity 0.3s; }
+.insta-item:hover img { transform: scale(1.08); opacity: 0.85; }
+.insta-overlay {
+  position: absolute; inset: 0; background: rgba(15,36,38,0.6);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+}
+.insta-item:hover .insta-overlay { opacity: 1; }
+.insta-overlay-icon { color: white; font-size: 28px; }
+.insta-placeholder {
+  width: 100%; height: 100%; display: flex; align-items: center;
+  justify-content: center; flex-direction: column; gap: 8px;
+  background: linear-gradient(135deg, var(--teal-pale), rgba(74,172,180,0.1));
+}
+.insta-placeholder-icon { font-size: 28px; opacity: 0.4; }
+
+/* ── MOBILE BOTTOM BAR ── */
+.mobile-shop-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 890;
+  background: var(--gold); padding: 0;
+  box-shadow: 0 -4px 20px rgba(212,168,75,0.3);
+}
+.mobile-shop-bar a {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px 24px; text-decoration: none;
+  font-family: 'Tajawal', sans-serif; font-size: 16px; font-weight: 700; color: white;
+}
+.mobile-shop-bar-icon { font-size: 20px; }
+@media (max-width: 768px), html.is-mobile {
+  .mobile-shop-bar { display: block; }
+  body { padding-bottom: 60px; }
+  .whatsapp-float { bottom: 80px; }
+}
+
+/* ── VIDEO SECTION ── */
+.video-section { background: var(--ink-mid); padding: 120px 48px; position: relative; overflow: hidden; }
+.video-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.video-wrap {
+  position: relative; aspect-ratio: 16/9; border-radius: 4px; overflow: hidden;
+  border: 1px solid rgba(74,172,180,0.2); cursor: pointer; background: var(--ink);
+}
+.video-wrap iframe { width: 100%; height: 100%; border: none; }
+.video-play-overlay {
+  position: absolute; inset: 0; background: rgba(15,36,38,0.5);
+  display: flex; align-items: center; justify-content: center; transition: opacity 0.3s;
+}
+.video-play-btn {
+  width: 72px; height: 72px; background: rgba(74,172,180,0.9); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 28px; transition: transform 0.3s, background 0.3s;
+}
+.video-wrap:hover .video-play-btn { transform: scale(1.1); background: var(--teal); }
+.video-text .section-h2-ar { color: white; }
+.video-text .section-h2-en { color: rgba(255,255,255,0.3); }
+.video-text .about-text { color: rgba(255,255,255,0.6); }
+
+/* ── PARTNERS / PAYMENT ── */
+.partners { background: var(--white); padding: 80px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.partners-inner { max-width: 1400px; margin: 0 auto; }
+.partners-label { font-family: 'Outfit', sans-serif; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 40px; }
+.partners-row { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.partner-badge {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 28px; border: 1px solid var(--border); border-radius: 4px;
+  transition: all 0.3s; opacity: 0.55;
+}
+.partner-badge:hover { opacity: 1; border-color: var(--teal); }
+.partner-badge-text { font-family: 'Outfit', sans-serif; font-size: 13px; letter-spacing: 2px; color: var(--charcoal); font-weight: 500; }
+.partner-badge-icon { font-size: 22px; }
+
+/* ── FAQ ── */
+.faq-section { background: var(--light-bg); padding: 120px 48px; }
+.faq-inner { max-width: 860px; margin: 0 auto; }
+.faq-list { margin-top: 60px; display: flex; flex-direction: column; gap: 2px; }
+.faq-item { background: var(--white); border: 1px solid var(--border); overflow: hidden; }
+.faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 28px; cursor: pointer; transition: background 0.3s;
+  font-family: 'Tajawal', sans-serif; font-size: 17px; font-weight: 500; color: var(--ink);
+  gap: 16px;
+}
+.faq-q:hover { background: var(--teal-pale); }
+.faq-item.open .faq-q { color: var(--teal-dark); background: var(--teal-pale); }
+.faq-icon {
+  width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--teal);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--teal); font-size: 18px; flex-shrink: 0; transition: transform 0.3s;
+  font-weight: 300;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--teal); color: white; }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+  font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 300;
+  color: var(--mid); line-height: 1.9; padding: 0 28px;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 28px 24px; }
 .whatsapp-float { position: fixed; bottom: 32px; left: 32px; z-index: 900; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: all 0.3s; }
 .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
 .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
@@ -500,6 +646,16 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   .shop-cta-banner h3 { font-size: 20px; }
   .btn-shop-big { padding: 14px 28px; font-size: 15px; }
   .mobile-menu { top: 60px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .insta-grid { grid-template-columns: repeat(2,1fr); }
+  .insta-section, .testimonials, .faq-section, .partners, .video-section { padding: 60px 20px; }
+  .video-inner { grid-template-columns: 1fr; gap: 32px; }
+  .partners-row { gap: 20px; }
+  .partner-badge { padding: 10px 18px; }
+  .faq-q { font-size: 15px; padding: 20px 20px; }
+  .faq-a { padding: 0 20px; }
+  .faq-item.open .faq-a { padding: 0 20px 20px; }
+  .insta-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   .story-left, .story-right { order: unset; }
 }
 </style>
@@ -511,6 +667,15 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   <span class="wa-tooltip">تواصل معنا</span>
 </a>
+
+<!-- MOBILE BOTTOM SHOP BAR -->
+<div class="mobile-shop-bar">
+  <a href="https://outfitsa.co/" target="_blank" rel="noopener">
+    <span class="mobile-shop-bar-icon">🛍</span>
+    <span>تسوق الآن — outfitsa.co</span>
+    <span>←</span>
+  </a>
+</div>
 
 <!-- COOKIE -->
 <div class="cookie-bar" id="cookieBar">
@@ -879,6 +1044,100 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="reveal">
+      <div class="section-tag" style="color:var(--teal-light);">آراء العملاء · Reviews</div>
+      <h2 class="section-h2-ar" style="color:white;">ماذا يقول<br>عملاؤنا</h2>
+      <p class="section-h2-en">500,000+ Happy Customer.</p>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testi-card reveal">
+        <div class="testi-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="testi-stars">
+          <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+        </div>
+        <p class="testi-quote">جودة المنتج فاقت توقعاتي، القماش ممتاز والخياطة محكمة. أطلبت من لاروش أكثر من مرة ودائماً راضٍ تماماً.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">م.ع</div>
+          <div>
+            <div class="testi-name">محمد العمري</div>
+            <div class="testi-city">جدة · Jeddah</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="testi-stars">
+          <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+        </div>
+        <p class="testi-quote">تصاميم عصرية وأسعار مناسبة جداً. الهودي اشتريته بالأسود والبني وكلهم ممتازين. التوصيل كان سريع.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">ف.ق</div>
+          <div>
+            <div class="testi-name">فهد القحطاني</div>
+            <div class="testi-city">الرياض · Riyadh</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-verified"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="testi-stars">
+          <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+        </div>
+        <p class="testi-quote">البنطلون الكارجو حلو جداً والمقاس كان صح. خدمة العملاء ممتازة وردوا علي بسرعة. بنصح فيها للكل.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">س.ز</div>
+          <div>
+            <div class="testi-name">سلطان الزهراني</div>
+            <div class="testi-city">الدمام · Dammam</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM GRID -->
+<section class="insta-section" id="instagram">
+  <div class="insta-inner">
+    <div class="insta-header reveal">
+      <div>
+        <div class="section-tag">تابعنا · Follow Us</div>
+        <h2 class="section-h2-ar">أحدث اللقطات</h2>
+        <p class="section-h2-en">Latest Looks · Instagram</p>
+      </div>
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="insta-handle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        <span style="font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:2px;">@LAROCHE_SA</span>
+      </a>
+    </div>
+    <div class="insta-grid reveal">
+      <a href="https://outfitsa.co/ar/قميص/c479281986" target="_blank" rel="noopener" class="insta-item">
+        <img src="https://cdn.salla.sa/xAmrZe/0f5ace39-48d0-45af-a62f-414bacbd353b-666.9921875x1000-WNyZ38RANslluX8qH6WuYTqglu7u1M5SJH3dKHWT.jpg" alt="قميص لاروش" loading="lazy">
+        <div class="insta-overlay"><span class="insta-overlay-icon">♡</span></div>
+      </a>
+      <a href="https://outfitsa.co/ar/بنطلون/c944013644" target="_blank" rel="noopener" class="insta-item">
+        <img src="https://cdn.salla.sa/xAmrZe/c7cca27a-e9c0-45bc-a96a-2e6ac51df677-666.9921875x1000-MccRsbeFmb9q2VL5JScznLTntJj0RjmEzbl2pzcM.jpg" alt="بنطلون لاروش" loading="lazy">
+        <div class="insta-overlay"><span class="insta-overlay-icon">♡</span></div>
+      </a>
+      <a href="https://outfitsa.co/ar/شورتات/c1129999823" target="_blank" rel="noopener" class="insta-item">
+        <img src="https://cdn.salla.sa/xAmrZe/5d4c1806-9dfe-4ede-9bbf-56109dfc5398-999.66543994647x1000-VnT97TsxLWGovtZIlSovchXTflv4NsJAejKERhd4.jpg" alt="شورت لاروش" loading="lazy">
+        <div class="insta-overlay"><span class="insta-overlay-icon">♡</span></div>
+      </a>
+      <a href="https://outfitsa.co/ar/هودي/c870530169" target="_blank" rel="noopener" class="insta-item">
+        <img src="https://cdn.salla.sa/xAmrZe/b195822b-78f7-407c-8e03-0d3da63c0305-666.9921875x1000-AK2xzY0PLaMicQ9ubr9vzLNBoeiGi1TgBmCIrNGD.jpg" alt="هودي لاروش" loading="lazy">
+        <div class="insta-overlay"><span class="insta-overlay-icon">♡</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- BRANCHES -->
 <section class="branches" id="branches">
   <div class="reveal">
@@ -946,6 +1205,123 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
           <span class="branch-status status-open">مفتوح الآن · Open</span>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="video-section">
+  <div class="video-inner">
+    <div class="video-text reveal">
+      <div class="section-tag" style="color:var(--teal-light);">العلامة · Brand</div>
+      <h2 class="section-h2-ar" style="color:white;">شاهد روح<br>لاروش</h2>
+      <p class="section-h2-en" style="color:rgba(255,255,255,0.3);">See the Brand in Motion.</p>
+      <p class="about-text" style="color:rgba(255,255,255,0.6);">أزياء عصرية تعكس هوية الجيل السعودي الجديد — جودة تُرى وراحة تُحسّ في كل قطعة.</p>
+      <a href="https://outfitsa.co/" target="_blank" rel="noopener" class="btn-hero-shop" style="display:inline-flex;margin-top:8px;">
+        <span>🛍</span><span>تسوق الآن</span>
+      </a>
+    </div>
+    <div class="video-wrap reveal reveal-delay-1" id="videoWrap" onclick="playVideo()">
+      <div class="video-play-overlay" id="videoOverlay">
+        <div class="video-play-btn">▶</div>
+      </div>
+      <img src="https://cdn.salla.sa/xAmrZe/0f5ace39-48d0-45af-a62f-414bacbd353b-666.9921875x1000-WNyZ38RANslluX8qH6WuYTqglu7u1M5SJH3dKHWT.jpg"
+           alt="لاروش فيديو" style="width:100%;height:100%;object-fit:cover;" id="videoThumb">
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS / PAYMENT -->
+<section class="partners reveal">
+  <div class="partners-inner">
+    <div class="partners-label">وسائل الدفع المتاحة · Payment Methods</div>
+    <div class="partners-row">
+      <div class="partner-badge">
+        <span class="partner-badge-icon">💳</span>
+        <span class="partner-badge-text">MADA</span>
+      </div>
+      <div class="partner-badge">
+        <span class="partner-badge-icon">💳</span>
+        <span class="partner-badge-text">VISA</span>
+      </div>
+      <div class="partner-badge">
+        <span class="partner-badge-icon">💳</span>
+        <span class="partner-badge-text">MASTERCARD</span>
+      </div>
+      <div class="partner-badge">
+        <span class="partner-badge-icon">📱</span>
+        <span class="partner-badge-text">STC PAY</span>
+      </div>
+      <div class="partner-badge">
+        <span class="partner-badge-icon">🍎</span>
+        <span class="partner-badge-text">APPLE PAY</span>
+      </div>
+      <div class="partner-badge">
+        <span class="partner-badge-icon">📦</span>
+        <span class="partner-badge-text">TAMARA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="reveal">
+      <div class="section-tag">الأسئلة الشائعة · FAQ</div>
+      <h2 class="section-h2-ar">أسئلة يسألها<br>عملاؤنا</h2>
+      <p class="section-h2-en">Common Questions Answered.</p>
+    </div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>كيف أطلب من متجر لاروش الإلكتروني؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">تفضل بزيارة متجرنا الإلكتروني على <strong>outfitsa.co</strong>، اختر المنتج والمقاس واللون، أضفه للسلة ثم أكمل عملية الدفع. التوصيل متاح لجميع مناطق المملكة.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>ما هي مناطق التوصيل؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">نوصل لجميع مناطق المملكة العربية السعودية — جدة، الرياض، الدمام، سكاكا، المدينة المنورة وجميع المناطق. يتم التوصيل خلال 2-5 أيام عمل.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>ما هي سياسة الاستبدال والإرجاع؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">يمكنك استبدال أو إرجاع المنتج خلال 7 أيام من الاستلام بشرط أن يكون في حالته الأصلية مع العلامة. للاستفسار تواصل معنا على الواتساب أو البريد الإلكتروني.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>هل يمكنني زيارة أحد الفروع؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">نعم! لدينا 5 فروع في جدة، الرياض، الدمام، سكاكا، والمدينة المنورة. مواعيد العمل السبت–الخميس 10ص–11م، والجمعة 2م–11م.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>ما وسائل الدفع المتاحة؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">نقبل مدى، فيزا، ماستركارد، STC Pay، Apple Pay، وتمارة للدفع بالتقسيط. جميع المدفوعات آمنة ومشفرة.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>كيف أتواصل مع خدمة العملاء؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">يمكنك التواصل معنا عبر واتساب على 0539900083، أو البريد الإلكتروني INFO@SWAG.COM.SA، أو من خلال نموذج التواصل في هذه الصفحة.</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1240,6 +1616,28 @@ function showCookie() { if (!localStorage.getItem('laroche_cookie')) { setTimeou
 function acceptCookie() { localStorage.setItem('laroche_cookie', 'accepted'); document.getElementById('cookieBar').classList.remove('show'); }
 function declineCookie() { localStorage.setItem('laroche_cookie', 'declined'); document.getElementById('cookieBar').classList.remove('show'); }
 showCookie();
+
+/* ── FAQ ── */
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── VIDEO ── */
+function playVideo() {
+  const wrap = document.getElementById('videoWrap');
+  const overlay = document.getElementById('videoOverlay');
+  const thumb = document.getElementById('videoThumb');
+  if (thumb) thumb.style.display = 'none';
+  if (overlay) overlay.style.display = 'none';
+  const iframe = document.createElement('iframe');
+  /* ✅ Replace VIDEO_ID with your actual YouTube video ID */
+  iframe.src = 'https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0';
+  iframe.style.cssText = 'width:100%;height:100%;border:none;position:absolute;inset:0;';
+  iframe.allow = 'autoplay; fullscreen';
+  wrap.appendChild(iframe);
+}
 </script>
 </body>
 </html>
