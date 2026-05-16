@@ -17,6 +17,45 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><path d='M22 4 L38 22 L22 40 L6 22 Z' fill='none' stroke='%234AACB4' stroke-width='2'/><path d='M22 10 L32 22 L22 34 L12 22 Z' fill='none' stroke='%234AACB4' stroke-width='1.5'/><path d='M22 15 L28 22 L22 29 L16 22 Z' fill='%234AACB4'/><circle cx='22' cy='4' r='2.5' fill='%23D4A84B'/><circle cx='38' cy='22' r='2.5' fill='%23D4A84B'/><circle cx='22' cy='40' r='2.5' fill='%23D4A84B'/><circle cx='6' cy='22' r='2.5' fill='%23D4A84B'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Tajawal:wght@200;300;400;500;700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- ✅ PWA Manifest (inline) -->
+<link rel="manifest" id="pwa-manifest">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect width='44' height='44' fill='%230F2426'/><path d='M22 4 L38 22 L22 40 L6 22 Z' fill='none' stroke='%234AACB4' stroke-width='2'/><path d='M22 15 L28 22 L22 29 L16 22 Z' fill='%234AACB4'/><circle cx='22' cy='4' r='2.5' fill='%23D4A84B'/><circle cx='38' cy='22' r='2.5' fill='%23D4A84B'/><circle cx='22' cy='40' r='2.5' fill='%23D4A84B'/><circle cx='6' cy='22' r='2.5' fill='%23D4A84B'/></svg>">
+<meta name="apple-mobile-web-app-title" content="لاروش">
+<script>
+/* PWA Manifest as inline blob — works without separate file */
+(function() {
+  const manifest = {
+    name: "لاروش التجارية — LAROCHE Trading Company",
+    short_name: "لاروش",
+    description: "علامة سعودية للأزياء العصرية الشبابية",
+    start_url: ".",
+    display: "standalone",
+    background_color: "#0F2426",
+    theme_color: "#4AACB4",
+    orientation: "portrait",
+    lang: "ar",
+    dir: "rtl",
+    icons: [
+      {
+        src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%230F2426'/><path d='M96 24 L168 96 L96 168 L24 96 Z' fill='none' stroke='%234AACB4' stroke-width='6'/><path d='M96 60 L132 96 L96 132 L60 96 Z' fill='%234AACB4'/><circle cx='96' cy='24' r='10' fill='%23D4A84B'/><circle cx='168' cy='96' r='10' fill='%23D4A84B'/><circle cx='96' cy='168' r='10' fill='%23D4A84B'/><circle cx='24' cy='96' r='10' fill='%23D4A84B'/></svg>",
+        sizes: "192x192",
+        type: "image/svg+xml",
+        purpose: "any maskable"
+      },
+      {
+        src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%230F2426'/><path d='M256 64 L448 256 L256 448 L64 256 Z' fill='none' stroke='%234AACB4' stroke-width='14'/><path d='M256 160 L352 256 L256 352 L160 256 Z' fill='%234AACB4'/><circle cx='256' cy='64' r='26' fill='%23D4A84B'/><circle cx='448' cy='256' r='26' fill='%23D4A84B'/><circle cx='256' cy='448' r='26' fill='%23D4A84B'/><circle cx='64' cy='256' r='26' fill='%23D4A84B'/></svg>",
+        sizes: "512x512",
+        type: "image/svg+xml",
+        purpose: "any maskable"
+      }
+    ]
+  };
+  const blob = new Blob([JSON.stringify(manifest)], {type: 'application/manifest+json'});
+  const link = document.getElementById('pwa-manifest');
+  if (link) link.href = URL.createObjectURL(blob);
+})();
+</script>
 <script>
 (function(){
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
@@ -54,13 +93,46 @@
   --white:       #FEFEFE;
   --border:      rgba(74,172,180,0.15);
   --shadow-teal: 0 20px 60px rgba(74,172,180,0.12);
+  /* ✅ Semantic tokens for dark mode switching */
+  --bg-page:     #FEFEFE;
+  --bg-section:  #F4FAFB;
+  --text-main:   #0F2426;
+  --text-soft:   #2C4A4E;
+  --text-muted:  #5A8589;
+  --card-bg:     #FFFFFF;
+  --nav-bg:      rgba(254,254,254,0.92);
+  --nav-bg-scr:  rgba(254,254,254,0.98);
+}
+
+/* ✅ DARK MODE — applies when <html> has class="dark" */
+html.dark {
+  /* Semantic tokens flip (correct) */
+  --bg-page:     #0F2426;
+  --bg-section:  #1A2F32;
+  --text-main:   #F4FAFB;
+  --text-soft:   #C5D8DA;
+  --text-muted:  #8AADB1;
+  --card-bg:     #1E3E42;
+  --nav-bg:      rgba(15,36,38,0.92);
+  --nav-bg-scr:  rgba(15,36,38,0.98);
+  --border:      rgba(74,172,180,0.3);
+  --light-bg:    #1A2F32;
+  /* ✅ FIX: Do NOT invert --ink and --white — they're used as background colors
+     in hero/dark sections that should STAY dark in dark mode too.
+     Only the semantic tokens above change. */
+}
+
+/* ✅ Smooth transition for theme switch */
+html, body, nav, section, footer, .achieve-card, .value-card,
+.collection-card, .branch-item, .form-input, .footer-inner {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--white);
-  color: var(--ink);
+  background: var(--bg-page);
+  color: var(--text-main);
   font-family: 'Tajawal', 'Outfit', sans-serif;
   direction: rtl;
   overflow-x: hidden;
@@ -72,11 +144,11 @@ body {
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(254,254,254,0.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border); transition: all 0.4s ease;
 }
-nav.scrolled { background: rgba(254,254,254,0.98); box-shadow: 0 4px 30px rgba(74,172,180,0.08); }
+nav.scrolled { background: var(--nav-bg-scr); box-shadow: 0 4px 30px rgba(74,172,180,0.08); }
 .nav-inner {
   max-width: 1400px; margin: 0 auto; padding: 0 48px;
   height: 72px; display: flex; align-items: center; justify-content: space-between;
@@ -586,23 +658,36 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   .nav-links { display: none; }
   .nav-actions .lang-toggle { display: none; }
   .nav-actions .btn-nav { display: none; }
+  /* ✅ Theme toggle STAYS visible on mobile nav (small icon next to hamburger) */
+  .nav-actions .theme-toggle {
+    width: 32px;
+    height: 32px;
+    border-color: var(--teal);
+  }
+  .nav-actions .theme-toggle svg { width: 16px; height: 16px; }
   .hamburger { display: flex; }
-  nav .nav-inner { padding: 0 20px; height: 60px; }
+  nav .nav-inner { padding: 0 16px; height: 60px; }
+  .nav-actions { gap: 8px; }
 
   .hero { min-height: 100svh; align-items: flex-start; }
   .hero-content {
     grid-template-columns: 1fr;
-    padding: 80px 24px 48px;
+    padding: 80px 24px 120px;  /* ✅ FIX: extra bottom padding for WhatsApp button clearance */
     gap: 0;
   }
   .hero-h1-ar { font-size: 48px; margin-bottom: 6px; }
   .hero-h1-en { font-size: 20px; margin-bottom: 20px; letter-spacing: 3px; }
   .hero-desc { font-size: 15px; margin-bottom: 32px; }
-  .hero-cta-row { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-cta-row { flex-direction: column; align-items: stretch; gap: 10px; }
   .btn-hero-shop, .btn-hero-primary, .btn-hero-ghost {
     text-align: center; justify-content: center;
     padding: 14px 24px; font-size: 15px; width: 100%;
-    display: block;
+    display: flex; align-items: center;
+  }
+  /* ✅ FIX: gold button less heavy on mobile — softer, not full-block gold */
+  .btn-hero-shop {
+    background: var(--gold);
+    box-shadow: 0 4px 14px rgba(212,168,75,0.3);
   }
   .hero-right { display: none; }
   .hero-scroll { display: none; }
@@ -767,6 +852,515 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   #back-to-top { bottom:80px; right:14px; width:42px; height:42px; font-size:18px; }
   #chat-popup { left:12px; right:12px; width:auto; bottom:90px; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   🌓 DARK MODE TOGGLE BUTTON
+   ═══════════════════════════════════════════════════════════ */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-soft);
+  transition: all 0.3s ease;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.theme-toggle:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: rotate(15deg);
+}
+.theme-toggle svg { width: 18px; height: 18px; transition: transform 0.5s ease; }
+.theme-toggle .icon-sun  { display: none; }
+.theme-toggle .icon-moon { display: block; }
+html.dark .theme-toggle .icon-sun  { display: block; }
+html.dark .theme-toggle .icon-moon { display: none; }
+
+/* Mobile theme toggle in hamburger menu */
+.mobile-menu .theme-toggle {
+  width: 48px; height: 48px;
+  border: 1.5px solid var(--teal);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   💳 TRUST BADGES SECTION
+   ═══════════════════════════════════════════════════════════ */
+.trust-section {
+  padding: 60px 48px;
+  background: var(--bg-section);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.trust-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.trust-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.trust-label-ar {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-soft);
+  margin-bottom: 32px;
+}
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+.trust-badge {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  height: 56px;
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.trust-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--teal-pale), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+html.dark .trust-badge::before {
+  background: linear-gradient(135deg, rgba(74,172,180,0.15), transparent);
+}
+.trust-badge:hover {
+  transform: translateY(-4px);
+  border-color: var(--teal);
+  box-shadow: 0 8px 24px rgba(74,172,180,0.15);
+}
+.trust-badge:hover::before { opacity: 1; }
+.trust-badge svg, .trust-badge img {
+  height: 28px;
+  width: auto;
+  max-width: 80px;
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+}
+.trust-badge-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .trust-section { padding: 40px 20px; }
+  .trust-badges { gap: 10px; }
+  .trust-badge { min-width: 90px; height: 48px; padding: 10px 16px; }
+  .trust-badge svg, .trust-badge img { height: 22px; }
+  .trust-badge-text { font-size: 12px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ✨ ENHANCED PAGE TRANSITIONS / SCROLL REVEALS
+   ═══════════════════════════════════════════════════════════ */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-zoom.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays for children */
+.stagger > *           { transition-delay: 0s; }
+.stagger > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger > *:nth-child(4) { transition-delay: 0.3s; }
+.stagger > *:nth-child(5) { transition-delay: 0.4s; }
+.stagger > *:nth-child(6) { transition-delay: 0.5s; }
+
+/* ✅ Smooth scroll snap feel for sections */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-fade-up, .reveal-fade-left, .reveal-fade-right, .reveal-zoom {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   🖼️ LAZY LOAD IMAGE STYLES
+   ═══════════════════════════════════════════════════════════ */
+img.lazy-img {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  background: linear-gradient(110deg, var(--bg-section) 30%, var(--teal-pale) 50%, var(--bg-section) 70%);
+  background-size: 200% 100%;
+  animation: lazy-shimmer 1.5s linear infinite;
+}
+img.lazy-img.loaded {
+  opacity: 1;
+  animation: none;
+  background: transparent;
+}
+@keyframes lazy-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   📱 PWA INSTALL PROMPT
+   ═══════════════════════════════════════════════════════════ */
+.pwa-prompt {
+  position: fixed;
+  bottom: -200px;
+  left: 16px;
+  right: 16px;
+  max-width: 420px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--teal-deep) 100%);
+  color: white;
+  padding: 18px 20px;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(15,36,38,0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(74,172,180,0.3);
+}
+.pwa-prompt.show { bottom: 24px; }
+.pwa-prompt-icon {
+  width: 44px; height: 44px;
+  background: rgba(74,172,180,0.2);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.pwa-prompt-icon svg { width: 26px; height: 26px; }
+.pwa-prompt-text { flex: 1; min-width: 0; }
+.pwa-prompt-title {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+}
+.pwa-prompt-sub {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+}
+.pwa-prompt-actions {
+  display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;
+}
+.pwa-btn-install {
+  background: var(--teal);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+.pwa-btn-install:hover { background: var(--teal-light); }
+.pwa-btn-dismiss {
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  padding: 4px 12px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.pwa-btn-dismiss:hover { color: white; }
+
+@media (max-width: 480px) {
+  .pwa-prompt { padding: 14px 16px; gap: 10px; }
+  .pwa-prompt-icon { width: 38px; height: 38px; }
+  .pwa-prompt-icon svg { width: 22px; height: 22px; }
+  .pwa-prompt-title { font-size: 13px; }
+  .pwa-prompt-sub { font-size: 10px; }
+}
+
+/* iOS-specific instruction modal */
+.pwa-ios-tip {
+  position: fixed;
+  bottom: 100px;
+  left: 16px;
+  right: 16px;
+  background: var(--ink);
+  color: white;
+  padding: 16px 18px;
+  border-radius: 12px;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 13px;
+  z-index: 9998;
+  display: none;
+  border: 1px solid rgba(74,172,180,0.3);
+  line-height: 1.6;
+}
+.pwa-ios-tip.show { display: block; }
+.pwa-ios-tip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; left: 30px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--ink);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   🌓 DARK MODE — section-specific fixes
+   ═══════════════════════════════════════════════════════════ */
+html.dark body { background: var(--bg-page); color: var(--text-main); }
+html.dark .about { background: var(--bg-page); }
+html.dark .about-text { color: var(--text-soft); }
+html.dark .section-h2-ar { color: var(--text-main); }
+html.dark .section-h2-en { color: var(--text-muted); }
+html.dark .value-card { background: var(--card-bg); }
+html.dark .value-title-ar { color: var(--text-main); }
+html.dark .value-desc { color: var(--text-soft); }
+html.dark .achievements { background: var(--bg-section); }
+html.dark .achieve-card { background: var(--card-bg); border-color: var(--border); }
+html.dark .form-input {
+  background: var(--card-bg);
+  color: var(--text-main);
+  border-color: var(--border);
+}
+html.dark .form-input::placeholder { color: var(--text-muted); }
+html.dark .form-label { color: var(--text-soft); }
+html.dark .tl-title { color: var(--text-main); }
+html.dark .tl-desc { color: var(--text-soft); }
+html.dark .branch-item { background: var(--card-bg); }
+html.dark .branch-city { color: var(--text-main); }
+html.dark .branch-address { color: var(--text-soft); }
+html.dark .geo-bg-rect { background: var(--card-bg); }
+html.dark nav { background: var(--nav-bg); }
+html.dark nav.scrolled { background: var(--nav-bg-scr); }
+html.dark .mobile-menu { background: rgba(15,36,38,0.98); }
+html.dark .mobile-menu a { color: var(--text-main); }
+html.dark .nav-links a { color: var(--text-soft); }
+html.dark .logo-ar { color: var(--teal-light); }
+
+/* ═══════════════════════════════════════════════════════════
+   🇸🇦 SAUDI PRIDE SECTION — Made in Saudi + Premium Quality
+   ═══════════════════════════════════════════════════════════ */
+.saudi-pride {
+  padding: 80px 48px;
+  background: linear-gradient(135deg, #F4FAFB 0%, var(--gold-pale) 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+}
+html.dark .saudi-pride {
+  background: linear-gradient(135deg, var(--bg-section) 0%, rgba(74,172,180,0.08) 100%);
+}
+.saudi-pride::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #006C35 0%, #006C35 50%, white 50%, white 100%);
+  opacity: 0.5;
+}
+.saudi-pride-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+.saudi-pride-text { text-align: right; }
+.saudi-pride-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #006C35;
+  margin-bottom: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.saudi-pride-tag::before {
+  content: '🇸🇦';
+  font-size: 16px;
+}
+html.dark .saudi-pride-tag { color: #4AC788; }
+.saudi-pride-h {
+  font-family: 'Tajawal', sans-serif;
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.saudi-pride-h span { color: #006C35; }
+html.dark .saudi-pride-h span { color: #4AC788; }
+.saudi-pride-p {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-soft);
+  line-height: 1.9;
+  max-width: 480px;
+}
+.saudi-badges {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.saudi-badge-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 26px 22px;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-width: 200px;
+  max-width: 240px;
+  cursor: default;
+}
+.saudi-badge-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #006C35, var(--gold));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+.saudi-badge-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,108,53,0.15);
+  border-color: rgba(0,108,53,0.3);
+}
+.saudi-badge-card:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.saudi-badge-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0,108,53,0.08), rgba(212,168,75,0.08));
+  border-radius: 16px;
+  padding: 8px;
+}
+.saudi-badge-icon svg { width: 100%; height: 100%; }
+.saudi-badge-title {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+.saudi-badge-en {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.saudi-badge-desc {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .saudi-pride { padding: 50px 20px; }
+  .saudi-pride-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .saudi-pride-text { text-align: center; }
+  .saudi-pride-p { margin: 0 auto; }
+  .saudi-badges { gap: 12px; }
+  .saudi-badge-card { padding: 20px 14px; min-width: 140px; }
+  .saudi-badge-icon { width: 56px; height: 56px; margin-bottom: 10px; padding: 6px; }
+  .saudi-badge-title { font-size: 13px; }
+  .saudi-badge-desc { font-size: 11px; }
+  .saudi-badge-en { font-size: 9px; margin-bottom: 8px; }
+}
+
 </style>
 </head>
 <body>
@@ -837,6 +1431,34 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   <span class="wa-tooltip">تواصل معنا</span>
 </a>
 
+<!-- ✅ NEW: PWA INSTALL PROMPT -->
+<div class="pwa-prompt" id="pwaPrompt" role="dialog" aria-label="تثبيت التطبيق">
+  <div class="pwa-prompt-icon">
+    <svg viewBox="0 0 44 44" fill="none">
+      <path d="M22 4 L38 22 L22 40 L6 22 Z" stroke="#7FCDD3" stroke-width="2" fill="none"/>
+      <path d="M22 15 L28 22 L22 29 L16 22 Z" fill="#4AACB4"/>
+      <circle cx="22" cy="4" r="2.5" fill="#D4A84B"/>
+      <circle cx="38" cy="22" r="2.5" fill="#D4A84B"/>
+      <circle cx="22" cy="40" r="2.5" fill="#D4A84B"/>
+      <circle cx="6" cy="22" r="2.5" fill="#D4A84B"/>
+    </svg>
+  </div>
+  <div class="pwa-prompt-text">
+    <div class="pwa-prompt-title">ثبّت لاروش على جهازك</div>
+    <div class="pwa-prompt-sub">تسوّق أسرع وبدون إنترنت · Install LaRoche App</div>
+  </div>
+  <div class="pwa-prompt-actions">
+    <button class="pwa-btn-install" onclick="pwaInstall()">تثبيت</button>
+    <button class="pwa-btn-dismiss" onclick="pwaDismiss()">لاحقاً</button>
+  </div>
+</div>
+
+<!-- iOS-only Safari install instructions -->
+<div class="pwa-ios-tip" id="pwaIosTip">
+  📱 لتثبيت التطبيق على iPhone: اضغط زر المشاركة <strong>⎙</strong> في أسفل Safari ثم اختر "Add to Home Screen"
+  <button onclick="document.getElementById('pwaIosTip').classList.remove('show')" style="background:none;border:none;color:var(--teal-light);float:left;cursor:pointer;font-size:11px;margin-top:6px;">إغلاق ✕</button>
+</div>
+
 <!-- MOBILE BOTTOM SHOP BAR -->
 <div class="mobile-shop-bar">
   <a href="https://outfitsa.co/" target="_blank" rel="noopener">
@@ -885,6 +1507,16 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
     </ul>
 
     <div class="nav-actions">
+      <!-- ✅ NEW: Dark/Light mode toggle -->
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="تبديل الوضع الداكن">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
       <button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
       <a href="#contact" class="btn-nav" data-tid="nav-contact-btn">تواصل معنا</a>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="فتح القائمة">
@@ -905,6 +1537,9 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   <a href="https://outfitsa.co/" target="_blank" rel="noopener" style="color:var(--gold);" onclick="closeMenu()">🛍 تسوق الآن — outfitsa.co</a>
   <a href="#contact" onclick="closeMenu()" style="color:var(--teal);">تواصل معنا</a>
   <a href="tel:0539900083" style="font-size:18px; color:var(--mid);">0539900083</a>
+
+  <!-- ✅ Language toggle inside mobile menu -->
+  <button class="lang-toggle" onclick="toggleLang()" style="font-size:13px;margin-top:16px;">EN / العربية</button>
 </div>
 
 <!-- HERO -->
@@ -1211,6 +1846,73 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   </div>
 </section>
 
+<!-- ✅ NEW: SAUDI PRIDE — Made in Saudi + Premium Quality -->
+<section class="saudi-pride">
+  <div class="saudi-pride-inner">
+    <div class="saudi-pride-text reveal-fade-up">
+      <div class="saudi-pride-tag">فخر سعودي · Saudi Pride</div>
+      <h2 class="saudi-pride-h">نفخر بأننا<br><span>صُنع في المملكة</span></h2>
+      <p class="saudi-pride-p">
+        لاروش علامة سعودية بكل فخر — ندعم الصناعة المحلية ونقدم منتجات تعكس روح الجيل السعودي الجديد. كل قطعة من لاروش تحمل قصة وطن وجودة لا تُضاهى.
+      </p>
+    </div>
+
+    <div class="saudi-badges reveal-fade-up">
+
+      <!-- Made in Saudi badge -->
+      <div class="saudi-badge-card">
+        <div class="saudi-badge-icon">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <!-- Saudi flag style background circle -->
+            <circle cx="32" cy="32" r="30" fill="#006C35"/>
+            <!-- Palm tree + swords (simplified Saudi emblem feel) -->
+            <g transform="translate(32 32)">
+              <!-- Palm fronds -->
+              <path d="M 0 -8 Q -8 -16 -12 -10 Q -8 -8 -2 -6 Z" fill="white" opacity="0.95"/>
+              <path d="M 0 -8 Q 8 -16 12 -10 Q 8 -8 2 -6 Z" fill="white" opacity="0.95"/>
+              <path d="M 0 -10 Q -6 -20 -2 -22 Q 2 -20 0 -10 Z" fill="white" opacity="0.95"/>
+              <path d="M 0 -10 Q 6 -20 2 -22 Q -2 -20 0 -10 Z" fill="white" opacity="0.95"/>
+              <!-- Trunk -->
+              <rect x="-1.5" y="-8" width="3" height="14" fill="white"/>
+              <!-- Crossed swords -->
+              <line x1="-14" y1="10" x2="14" y2="10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <line x1="-12" y1="13" x2="12" y2="7" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+              <circle cx="-14" cy="10" r="1.5" fill="#D4A84B"/>
+              <circle cx="14" cy="10" r="1.5" fill="#D4A84B"/>
+            </g>
+          </svg>
+        </div>
+        <div class="saudi-badge-title">صُنع في السعودية</div>
+        <div class="saudi-badge-en">MADE IN SAUDI ARABIA</div>
+        <div class="saudi-badge-desc">علامة محلية بهوية سعودية أصيلة — من المصمم إلى يدك</div>
+      </div>
+
+      <!-- Saudi Investment / Quality badge -->
+      <div class="saudi-badge-card">
+        <div class="saudi-badge-icon">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#0F2426"/>
+            <!-- Quality checkmark with crown -->
+            <g transform="translate(32 32)">
+              <!-- Crown -->
+              <path d="M -14 -6 L -10 -14 L -6 -8 L 0 -16 L 6 -8 L 10 -14 L 14 -6 L 14 -2 L -14 -2 Z" fill="#D4A84B"/>
+              <circle cx="-10" cy="-14" r="1.5" fill="white"/>
+              <circle cx="0" cy="-16" r="1.5" fill="white"/>
+              <circle cx="10" cy="-14" r="1.5" fill="white"/>
+              <!-- Check mark below -->
+              <path d="M -8 6 L -2 12 L 10 0" stroke="#4AACB4" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+        </div>
+        <div class="saudi-badge-title">جودة سعودية</div>
+        <div class="saudi-badge-en">PREMIUM QUALITY</div>
+        <div class="saudi-badge-desc">معايير عالمية بأيدٍ سعودية — كل قطعة تخضع لفحص دقيق</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-inner">
@@ -1398,38 +2100,7 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
   </div>
 </section>
 
-<!-- PARTNERS / PAYMENT -->
-<section class="partners reveal">
-  <div class="partners-inner">
-    <div class="partners-label">وسائل الدفع المتاحة · Payment Methods</div>
-    <div class="partners-row">
-      <div class="partner-badge">
-        <span class="partner-badge-icon">💳</span>
-        <span class="partner-badge-text">MADA</span>
-      </div>
-      <div class="partner-badge">
-        <span class="partner-badge-icon">💳</span>
-        <span class="partner-badge-text">VISA</span>
-      </div>
-      <div class="partner-badge">
-        <span class="partner-badge-icon">💳</span>
-        <span class="partner-badge-text">MASTERCARD</span>
-      </div>
-      <div class="partner-badge">
-        <span class="partner-badge-icon">📱</span>
-        <span class="partner-badge-text">STC PAY</span>
-      </div>
-      <div class="partner-badge">
-        <span class="partner-badge-icon">🍎</span>
-        <span class="partner-badge-text">APPLE PAY</span>
-      </div>
-      <div class="partner-badge">
-        <span class="partner-badge-icon">📦</span>
-        <span class="partner-badge-text">TAMARA</span>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- PARTNERS section removed — replaced by new Trust Badges section above newsletter -->
 
 <!-- FAQ -->
 <section class="faq-section">
@@ -1566,11 +2237,6 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
         </a>
         <div><div class="contact-label">واتساب</div><div class="contact-value"><a href="https://wa.me/966539900083" target="_blank">0539900083</a></div></div>
       </div>
-      <!-- ✅ NEW: E-commerce link in contact -->
-      <div class="contact-info-item">
-        <a class="contact-icon" href="https://outfitsa.co/" target="_blank" style="font-size:12px;font-family:Outfit,sans-serif;letter-spacing:0;">🛍</a>
-        <div><div class="contact-label">متجرنا الإلكتروني</div><div class="contact-value"><a href="https://outfitsa.co/" target="_blank" style="color:var(--teal);">outfitsa.co</a></div></div>
-      </div>
     </div>
     <div class="reveal reveal-delay-1">
       <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" class="form-input" id="ctName" placeholder="أدخل اسمك الكريم" data-ph-ar="أدخل اسمك الكريم" data-ph-en="Enter your full name"></div>
@@ -1581,6 +2247,77 @@ footer { background: var(--ink); padding: 80px 48px 40px; }
       <div class="form-group"><label class="form-label">رسالتك</label><textarea class="form-input form-textarea" id="ctMessage" placeholder="اكتب رسالتك هنا..." data-ph-ar="اكتب رسالتك هنا..." data-ph-en="Write your message here..."></textarea></div>
       <button class="btn-submit" id="ctSubmitBtn" onclick="submitContact()" data-tid="ct-btn">إرسال الرسالة ←</button>
       <div class="contact-success" id="ctSuccess">✓ تم إرسال رسالتك بنجاح! سنرد عليك في أقرب وقت.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ NEW: TRUST BADGES — Payment & Shipping partners -->
+<section class="trust-section">
+  <div class="trust-inner">
+    <div class="trust-label">Trusted Payment Methods</div>
+    <div class="trust-label-ar" data-tid="trust-ar">طرق دفع آمنة وموثوقة</div>
+    <div class="trust-badges reveal-fade-up">
+
+      <!-- Mada (Saudi local payment) -->
+      <div class="trust-badge" title="مدى — Mada">
+        <svg viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="96" height="24" rx="4" fill="#84BD00"/>
+          <text x="50" y="20" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">mada</text>
+          <circle cx="14" cy="16" r="3" fill="#FFB81C"/>
+        </svg>
+      </div>
+
+      <!-- Visa -->
+      <div class="trust-badge" title="Visa">
+        <svg viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="96" height="24" rx="4" fill="#1A1F71"/>
+          <text x="50" y="22" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" fill="white" text-anchor="middle" font-style="italic" letter-spacing="1">VISA</text>
+        </svg>
+      </div>
+
+      <!-- Mastercard -->
+      <div class="trust-badge" title="Mastercard">
+        <svg viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="96" height="24" rx="4" fill="white" stroke="#e5e5e5"/>
+          <circle cx="42" cy="16" r="8" fill="#EB001B"/>
+          <circle cx="56" cy="16" r="8" fill="#F79E1B"/>
+          <path d="M 49 10 Q 52 16 49 22 Q 46 16 49 10" fill="#FF5F00"/>
+        </svg>
+      </div>
+
+      <!-- Apple Pay -->
+      <div class="trust-badge" title="Apple Pay">
+        <svg viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="96" height="24" rx="4" fill="black"/>
+          <path d="M22 13.5c-.5.6-1.3 1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.3-1 2-1 .1.8-.2 1.6-.6 2.2zm.6.7c-1.1-.1-2.1.6-2.6.6-.5 0-1.3-.6-2.2-.6-1.1 0-2.2.7-2.7 1.7-1.2 2-.3 5 .8 6.6.6.8 1.2 1.7 2.1 1.7.8 0 1.2-.5 2.2-.5 1 0 1.3.5 2.2.5.9 0 1.5-.8 2.1-1.6.7-.9.9-1.8.9-1.9 0 0-1.8-.7-1.8-2.7 0-1.7 1.4-2.5 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.3z" fill="white"/>
+          <text x="60" y="20" font-family="-apple-system,Helvetica,sans-serif" font-size="11" font-weight="600" fill="white">Pay</text>
+        </svg>
+      </div>
+
+      <!-- Tabby (BNPL) -->
+      <div class="trust-badge" title="تابي — Tabby · ادفع لاحقاً">
+        <svg viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="96" height="24" rx="4" fill="#3BFFC3"/>
+          <text x="50" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="800" fill="#1A1A1A" text-anchor="middle" letter-spacing="-0.5">tabby</text>
+        </svg>
+      </div>
+
+      <!-- Tamara (BNPL) -->
+      <div class="trust-badge" title="تمارا — Tamara · ادفع بالتقسيط">
+        <svg viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="96" height="24" rx="4" fill="#E62E5C"/>
+          <text x="50" y="22" font-family="Arial,sans-serif" font-size="13" font-weight="800" fill="white" text-anchor="middle" letter-spacing="0.5">tamara</text>
+        </svg>
+      </div>
+
+      <!-- STC Pay -->
+      <div class="trust-badge" title="STC Pay">
+        <svg viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="96" height="24" rx="4" fill="#4F008C"/>
+          <text x="50" y="21" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle" letter-spacing="0.5">STC Pay</text>
+        </svg>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1761,6 +2498,8 @@ const translations = {
   'nl-h':             ['ابقَ على اطلاع', 'Stay Updated'],
   'nl-p':             ['اشترك ليصلك أحدث مجموعاتنا وعروضنا الحصرية أولاً بأول','Subscribe to receive our latest collections and exclusive offers first'],
   'nl-btn':           ['اشترك الآن',     'Subscribe Now'],
+  /* TRUST BADGES */
+  'trust-ar':         ['طرق دفع آمنة وموثوقة', 'Safe & Trusted Payment Methods'],
   /* FOOTER */
   'footer-desc':      ['علامة سعودية متخصصة في الأزياء العصرية الشبابية — تجمع بين الجودة والتصميم والقيمة الحقيقية.','A Saudi brand specializing in modern youth fashion — combining quality, design, and real value.'],
 };
@@ -2007,6 +2746,243 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+/* ═══════════════════════════════════════════════════════════
+   🌓 DARK / LIGHT MODE TOGGLE
+   ═══════════════════════════════════════════════════════════ */
+(function initTheme() {
+  // Check saved preference or system preference
+  const saved = localStorage.getItem('laroche-theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const useDark = saved === 'dark' || (!saved && prefersDark);
+  if (useDark) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.classList.toggle('dark');
+  localStorage.setItem('laroche-theme', isDark ? 'dark' : 'light');
+
+  // Update theme-color meta for mobile browser UI
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) {
+    meta.setAttribute('content', isDark ? '#0F2426' : '#4AACB4');
+  }
+
+  // Smooth ripple feedback
+  const btn = document.getElementById('themeBtn');
+  if (btn) {
+    btn.style.transform = 'rotate(360deg)';
+    setTimeout(() => { btn.style.transform = ''; }, 500);
+  }
+}
+
+/* Listen to system preference changes (only if user hasn't set a manual choice) */
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('laroche-theme')) {
+      document.documentElement.classList.toggle('dark', e.matches);
+    }
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════
+   🖼️ LAZY LOAD IMAGES (with IntersectionObserver)
+   ═══════════════════════════════════════════════════════════ */
+(function initLazyLoad() {
+  // Step 1: Find all <img> tags with a real src and convert them
+  document.querySelectorAll('img').forEach(img => {
+    // Skip very tiny or already-processed images
+    if (img.dataset.lazyProcessed === '1') return;
+    if (img.hasAttribute('data-src')) return;
+
+    // For images that already have src, convert to lazy
+    const src = img.getAttribute('src');
+    if (src && !src.startsWith('data:') && !img.complete) {
+      img.setAttribute('data-src', src);
+      img.classList.add('lazy-img');
+      // Tiny transparent placeholder
+      img.setAttribute('src', 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"%3E%3C/svg%3E');
+    } else if (src && img.complete) {
+      // Already loaded — just mark it
+      img.classList.add('lazy-img', 'loaded');
+    }
+    // Native lazy attribute as fallback
+    img.setAttribute('loading', 'lazy');
+    img.setAttribute('decoding', 'async');
+    img.dataset.lazyProcessed = '1';
+  });
+
+  // Step 2: IntersectionObserver to actually load them
+  if ('IntersectionObserver' in window) {
+    const imgObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const realSrc = img.getAttribute('data-src');
+          if (realSrc) {
+            const tmp = new Image();
+            tmp.onload = function() {
+              img.setAttribute('src', realSrc);
+              img.classList.add('loaded');
+            };
+            tmp.onerror = function() {
+              img.classList.add('loaded'); // remove shimmer even on error
+            };
+            tmp.src = realSrc;
+            img.removeAttribute('data-src');
+          }
+          observer.unobserve(img);
+        }
+      });
+    }, { rootMargin: '200px 0px', threshold: 0.01 });
+
+    document.querySelectorAll('img.lazy-img:not(.loaded)').forEach(img => imgObserver.observe(img));
+  } else {
+    // Fallback for old browsers — load everything immediately
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      img.src = img.dataset.src;
+      img.classList.add('loaded');
+    });
+  }
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   ✨ ENHANCED SCROLL REVEAL ANIMATIONS
+   ═══════════════════════════════════════════════════════════ */
+(function initScrollReveal() {
+  // Auto-tag common section elements for reveal if not already tagged
+  document.querySelectorAll('section').forEach((sec, idx) => {
+    if (sec.classList.contains('hero')) return; // skip hero
+
+    // Tag direct headings
+    sec.querySelectorAll('.section-h2-ar, .section-h2-en, .section-tag').forEach(el => {
+      if (!el.classList.contains('reveal-fade-up') && !el.classList.contains('reveal')) {
+        el.classList.add('reveal-fade-up');
+      }
+    });
+  });
+
+  // Add reveal to cards if missing
+  document.querySelectorAll('.value-card, .achieve-card, .branch-item, .trust-badge').forEach(el => {
+    if (!el.classList.contains('reveal-fade-up') && !el.classList.contains('reveal')) {
+      el.classList.add('reveal-fade-up');
+    }
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    // Old browser fallback — just show everything
+    document.querySelectorAll('.reveal-fade-up, .reveal-fade-left, .reveal-fade-right, .reveal-zoom').forEach(el => {
+      el.classList.add('is-visible');
+    });
+    return;
+  }
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal-fade-up, .reveal-fade-left, .reveal-fade-right, .reveal-zoom').forEach(el => {
+    revealObserver.observe(el);
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   🔗 SMOOTH ANCHOR SCROLL with offset (for fixed nav)
+   ═══════════════════════════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    const offset = 80;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  });
+});
+
+/* ═══════════════════════════════════════════════════════════
+   📱 PWA INSTALL PROMPT (Android/Chrome + iOS Safari)
+   ═══════════════════════════════════════════════════════════ */
+let deferredPWAPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPWAPrompt = e;
+  // Show our custom banner after 8 seconds (don't be annoying)
+  if (!localStorage.getItem('pwa-dismissed') && !isInStandaloneMode()) {
+    setTimeout(showPWAPrompt, 8000);
+  }
+});
+
+function isInStandaloneMode() {
+  return window.matchMedia('(display-mode: standalone)').matches
+      || window.navigator.standalone === true;
+}
+
+function isIOS() {
+  return /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+function showPWAPrompt() {
+  const prompt = document.getElementById('pwaPrompt');
+  if (prompt) prompt.classList.add('show');
+}
+
+function pwaInstall() {
+  if (deferredPWAPrompt) {
+    // Chrome / Edge / Samsung
+    deferredPWAPrompt.prompt();
+    deferredPWAPrompt.userChoice.then((choice) => {
+      if (choice.outcome === 'accepted') {
+        console.log('PWA installed');
+      }
+      deferredPWAPrompt = null;
+      pwaDismiss();
+    });
+  } else if (isIOS()) {
+    // iOS Safari — show manual instructions
+    document.getElementById('pwaPrompt').classList.remove('show');
+    document.getElementById('pwaIosTip').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('pwaIosTip').classList.remove('show');
+    }, 12000);
+  } else {
+    // Fallback for browsers without beforeinstallprompt
+    pwaDismiss();
+  }
+}
+
+function pwaDismiss() {
+  const prompt = document.getElementById('pwaPrompt');
+  if (prompt) prompt.classList.remove('show');
+  localStorage.setItem('pwa-dismissed', Date.now());
+}
+
+/* For iOS Safari — show banner manually after delay if not installed */
+window.addEventListener('load', () => {
+  if (isIOS() && !isInStandaloneMode() && !localStorage.getItem('pwa-dismissed')) {
+    setTimeout(showPWAPrompt, 10000);
+  }
+});
+
+/* Track successful install */
+window.addEventListener('appinstalled', () => {
+  console.log('LaRoche PWA installed successfully');
+  pwaDismiss();
+  localStorage.setItem('pwa-installed', '1');
+});
+
+
 </script>
 </body>
 </html>
