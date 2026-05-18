@@ -1336,49 +1336,16 @@ const statsObserver = new IntersectionObserver((entries) => {
 const strip = document.querySelector('.stats-strip');
 if (strip) statsObserver.observe(strip);
 
-function submitContact() {
-  const name = document.getElementById('ctName').value.trim();
-  const email = document.getElementById('ctEmail').value.trim();
-  const msg = document.getElementById('ctMessage').value.trim();
-  if (!name || !email) { alert('يرجى ملء الاسم والبريد الإلكتروني'); return; }
-  const btn = document.getElementById('ctSubmitBtn');
-  btn.disabled = true; btn.textContent = 'جاري الإرسال...';
-  const form = new FormData();
-  form.append('name', name); form.append('email', email);
-  form.append('subject', document.getElementById('ctSubject').value);
-  form.append('message', msg);
-  fetch('https://formsubmit.co/ajax/INFO@SWAG.COM.SA', { method: 'POST', headers: { 'Accept': 'application/json' }, body: form })
-  .then(r => r.json()).then(() => { document.getElementById('ctSuccess').style.display = 'block'; btn.style.display = 'none'; })
-  .catch(() => { window.open(`https://wa.me/966539900083?text=${encodeURIComponent('الاسم: '+name+'\n'+msg)}`, '_blank'); document.getElementById('ctSuccess').style.display = 'block'; btn.style.display = 'none'; });
-}
+// submitContact: moved to Google Sheets integration below
 
 function openCareersModal() { document.getElementById('careersModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeCareersModal(e) { if (e.target === document.getElementById('careersModal')) closeModal(); }
 function closeModal() { document.getElementById('careersModal').classList.remove('open'); document.body.style.overflow = ''; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-function submitCareers() {
-  const name = document.getElementById('careerName').value.trim();
-  const email = document.getElementById('careerEmail').value.trim();
-  const phone = document.getElementById('careerPhone').value.trim();
-  if (!name || !email || !phone) { alert('يرجى ملء الحقول الإلزامية'); return; }
-  const btn = document.getElementById('careerSubmitBtn');
-  btn.disabled = true; btn.textContent = 'جاري الإرسال...';
-  const form = new FormData();
-  form.append('name', name); form.append('email', email); form.append('phone', phone);
-  form.append('role', document.getElementById('careerRole').value);
-  form.append('bio', document.getElementById('careerBio').value);
-  fetch('https://formsubmit.co/ajax/HR@SWAG.COM.SA', { method: 'POST', headers: { 'Accept': 'application/json' }, body: form })
-  .then(() => { document.getElementById('careerFormWrap').style.display = 'none'; document.getElementById('careerSuccess').style.display = 'block'; })
-  .catch(() => { window.open(`https://wa.me/966539900083?text=${encodeURIComponent('طلب توظيف\nالاسم: '+name+'\nالجوال: '+phone)}`, '_blank'); document.getElementById('careerFormWrap').style.display = 'none'; document.getElementById('careerSuccess').style.display = 'block'; });
-}
+// submitCareers: moved to Google Sheets integration below
 
-function submitNewsletter() {
-  const email = document.getElementById('nlEmail').value.trim();
-  if (!email || !email.includes('@')) { alert('يرجى إدخال بريد إلكتروني صحيح'); return; }
-  document.getElementById('nlEmail').value = '';
-  alert('شكراً لاشتراكك!');
-}
+// submitNewsletter: moved to Google Sheets integration below
 
 function showCookie() { if (!localStorage.getItem('laroche_cookie')) { setTimeout(() => document.getElementById('cookieBar').classList.add('show'), 1500); } }
 function acceptCookie() { localStorage.setItem('laroche_cookie', 'accepted'); document.getElementById('cookieBar').classList.remove('show'); }
@@ -1640,6 +1607,119 @@ setInterval(function() {
     }
   });
 }, 5000);
+</script>
+
+
+<script>
+// ═══════════════════════════════════════════════════════
+// LAROCHE — Google Sheets Form Integration
+// Contact → Sheet 1 | Careers → Sheet 2 | Newsletter → Sheet 3
+// SETUP: Replace SHEET_URL below with your Google Apps Script URL
+// ═══════════════════════════════════════════════════════
+
+var LAROCHE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzbzxbQvgF7ZfTV8SsqLab8dvXV2Y4SQiaK0kQz0u4pjz1TDnYwa5gj3UfDyT5AqeceBA/exec';
+
+function submitToSheet(sheetName, data, onSuccess, onError) {
+  if (LAROCHE_SHEET_URL === 'REPLACE_WITH_YOUR_GOOGLE_SCRIPT_URL') {
+    // Not connected yet — fallback to formsubmit
+    onError && onError();
+    return;
+  }
+  data.sheet = sheetName;
+  data.timestamp = new Date().toLocaleString('ar-SA', {timeZone: 'Asia/Riyadh'});
+  fetch(LAROCHE_SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(function() { onSuccess && onSuccess(); })
+  .catch(function() { onError && onError(); });
+}
+
+function submitContact() {
+  var name = document.getElementById('ctName').value.trim();
+  var email = document.getElementById('ctEmail').value.trim();
+  var msg = document.getElementById('ctMessage').value.trim();
+  if (!name || !email) { alert('يرجى ملء الاسم والبريد الإلكتروني'); return; }
+  var btn = document.getElementById('ctSubmitBtn');
+  btn.disabled = true; btn.textContent = 'جاري الإرسال...';
+
+  // Track in GA4
+  if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'Lead', event_label: 'Contact Form' });
+
+  var data = {
+    name: name,
+    email: email,
+    subject: document.getElementById('ctSubject').value,
+    message: msg
+  };
+
+  function showSuccess() {
+    document.getElementById('ctSuccess').style.display = 'block';
+    btn.style.display = 'none';
+  }
+
+  submitToSheet('Contact', data, showSuccess, function() {
+    // Fallback: formsubmit
+    var form = new FormData();
+    form.append('name', name); form.append('email', email);
+    form.append('subject', data.subject); form.append('message', msg);
+    fetch('https://formsubmit.co/ajax/INFO@SWAG.COM.SA', {
+      method: 'POST', headers: { 'Accept': 'application/json' }, body: form
+    }).then(function() { showSuccess(); }).catch(function() { showSuccess(); });
+  });
+}
+
+function submitCareers() {
+  var name = document.getElementById('careerName').value.trim();
+  var email = document.getElementById('careerEmail').value.trim();
+  var phone = document.getElementById('careerPhone').value.trim();
+  if (!name || !email || !phone) { alert('يرجى ملء الحقول الإلزامية'); return; }
+  var btn = document.getElementById('careerSubmitBtn');
+  btn.disabled = true; btn.textContent = 'جاري الإرسال...';
+
+  // Track in GA4
+  if (typeof gtag !== 'undefined') gtag('event', 'submit_application', { event_category: 'HR', event_label: 'Career Form' });
+
+  var data = {
+    name: name,
+    email: email,
+    phone: phone,
+    role: document.getElementById('careerRole').value,
+    bio: document.getElementById('careerBio').value
+  };
+
+  function showSuccess() {
+    document.getElementById('careerFormWrap').style.display = 'none';
+    document.getElementById('careerSuccess').style.display = 'block';
+  }
+
+  submitToSheet('Careers', data, showSuccess, function() {
+    var form = new FormData();
+    form.append('name', name); form.append('email', email);
+    form.append('phone', phone); form.append('role', data.role); form.append('bio', data.bio);
+    fetch('https://formsubmit.co/ajax/HR@SWAG.COM.SA', {
+      method: 'POST', headers: { 'Accept': 'application/json' }, body: form
+    }).then(function() { showSuccess(); }).catch(function() { showSuccess(); });
+  });
+}
+
+function submitNewsletter() {
+  var email = document.getElementById('nlEmail').value.trim();
+  if (!email || !email.includes('@')) { alert('يرجى إدخال بريد إلكتروني صحيح'); return; }
+
+  // Track in GA4
+  if (typeof gtag !== 'undefined') gtag('event', 'sign_up', { event_category: 'Lead', event_label: 'Newsletter' });
+
+  submitToSheet('Newsletter', { email: email }, function() {
+    document.getElementById('nlEmail').value = '';
+    alert('شكراً لاشتراكك! ✓');
+  }, function() {
+    document.getElementById('nlEmail').value = '';
+    alert('شكراً لاشتراكك! ✓');
+  });
+}
 </script>
 
 </body>
